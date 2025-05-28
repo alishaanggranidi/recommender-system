@@ -1,18 +1,18 @@
 # 📊 Laporan Proyek Rekomendasi Cellphone
 
-## Domain Proyek
+## Project Overview
 ### Latar Belakang
 
-Seiring dengan perkembangan teknologi, pasar ponsel pintar semakin berkembang pesat dengan banyaknya pilihan model yang tersedia. Pengguna seringkali mengalami kesulitan dalam memilih ponsel yang tepat karena banyaknya pilihan yang ada. Selain itu, spesifikasi teknis yang kompleks dan beragam membuat proses pemilihan ponsel menjadi semakin sulit bagi konsumen awam. Hal ini menimbulkan masalah bagi pengguna yang ingin mendapatkan ponsel yang sesuai dengan kebutuhan mereka tanpa harus melalui proses penelitian yang memakan waktu.
+Sistem rekomendasi telah berkembang menjadi alat penting di berbagai industri, termasuk e-commerce, di mana mereka membantu pengguna menemukan produk yang sesuai dengan preferensi pribadi mereka. Dalam konteks ponsel, banyaknya pilihan model dengan spesifikasi yang beragam sering kali membuat pengguna kesulitan dalam membuat keputusan. Oleh karena itu, sistem rekomendasi yang efektif dapat mempermudah proses pemilihan ponsel yang tepat dengan mempertimbangkan kebutuhan dan preferensi individu. Sistem rekomendasi ini umumnya menggunakan teknik seperti collaborative filtering, yang memanfaatkan data interaksi pengguna lain, dan content-based filtering, yang berbasis pada deskripsi produk itu sendiri.
 
-Sistem rekomendasi adalah alat untuk berinteraksi dengan ruang informasi yang besar dan kompleks[1]. Oleh karena itu, penting untuk memiliki sistem rekomendasi yang dapat menyederhanakan proses ini dengan memberikan rekomendasi yang relevan berdasarkan kebutuhan dan preferensi pengguna. Dengan memanfaatkan data rating pengguna sebelumnya dan spesifikasi teknis ponsel, sistem rekomendasi ini diharapkan dapat membantu pengguna menemukan ponsel yang paling sesuai dengan kebutuhan mereka, baik dari segi performa, harga, maupun fitur lainnya.
+Namun, tantangan utama dalam pengembangan sistem rekomendasi adalah mengatasi masalah kekosongan data, di mana tidak semua pengguna memberikan rating untuk setiap item, serta menangani keanekaragaman kebutuhan pengguna yang berbeda. Kombinasi kedua metode tersebut dalam pendekatan hybrid dapat meningkatkan akurasi dan relevansi rekomendasi.[1] Proyek ini bertujuan untuk membangun sistem rekomendasi ponsel yang dapat memberikan saran yang lebih personal dan relevan, mengatasi masalah data yang tidak lengkap dan menghasilkan rekomendasi yang lebih sesuai dengan preferensi pengguna.
 
 **Pentingnya Proyek**
 
-Proyek ini penting karena: 
-- Peningkatan Pengalaman Pengguna: Membantu pengguna menemukan ponsel yang sesuai dengan preferensi mereka, meningkatkan kepuasan dan pengalaman pengguna.
-- Efisiensi: Mengurangi waktu dan usaha yang dibutuhkan pengguna dalam mencari dan membandingkan berbagai model ponsel.
-- Personalisasi: Memberikan rekomendasi yang dipersonalisasi berdasarkan data rating pengguna.
+Proyek ini memiliki peranan penting karena:
+1. Peningkatan Pengalaman Pengguna: Mempermudah pengguna dalam menemukan ponsel yang sesuai dengan preferensi mereka, sehingga meningkatkan kepuasan dan kualitas pengalaman pengguna.
+2. Efisiensi: Menghemat waktu dan usaha pengguna dalam proses pencarian serta perbandingan berbagai model ponsel.
+3. Personalisasi: Menyediakan rekomendasi yang disesuaikan dengan preferensi individu berdasarkan data penilaian pengguna.
 
 ## Business Understanding
 
@@ -363,4 +363,4 @@ Dengan menggunakan kedua pendekatan ini, kita dapat membangun sistem rekomendasi
 
 ## Referensi
 
-[1] [R. Burke, A. Felfernig, and M. H. Göker, “Recommender Systems: An Overview”, AIMag, vol. 32, no. 3, pp. 13-18, Jun. 2011.](https://www.researchgate.net/publication/375442432_Recommender_Systems_A_Review/link/660ab75d390c214cfd2f2864/download?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uIn19) 
+[1] [Li, M., Wu, Q., Fu, L., Tang, Z., & Banks, D., "Recommender Systems: A Review," Journal of the American Statistical Association, vol. 119, no. 545, pp. 773-785, Nov. 2023.](https://www.researchgate.net/publication/375442432_Recommender_Systems_A_Review/link/660ab75d390c214cfd2f2864/download?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uIn19) 
