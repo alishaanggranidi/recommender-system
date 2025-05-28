@@ -1,13 +1,14 @@
 # 📊 Laporan Proyek Rekomendasi Cellphone
 
 ## Project Overview
+
 ### Latar Belakang
 
 Sistem rekomendasi telah berkembang menjadi alat penting di berbagai industri, termasuk e-commerce, di mana mereka membantu pengguna menemukan produk yang sesuai dengan preferensi pribadi mereka. Dalam konteks ponsel, banyaknya pilihan model dengan spesifikasi yang beragam sering kali membuat pengguna kesulitan dalam membuat keputusan. Oleh karena itu, sistem rekomendasi yang efektif dapat mempermudah proses pemilihan ponsel yang tepat dengan mempertimbangkan kebutuhan dan preferensi individu. Sistem rekomendasi ini umumnya menggunakan teknik seperti collaborative filtering, yang memanfaatkan data interaksi pengguna lain, dan content-based filtering, yang berbasis pada deskripsi produk itu sendiri.
 
 Namun, tantangan utama dalam pengembangan sistem rekomendasi adalah mengatasi masalah kekosongan data, di mana tidak semua pengguna memberikan rating untuk setiap item, serta menangani keanekaragaman kebutuhan pengguna yang berbeda. Kombinasi kedua metode tersebut dalam pendekatan hybrid dapat meningkatkan akurasi dan relevansi rekomendasi.[1] Proyek ini bertujuan untuk membangun sistem rekomendasi ponsel yang dapat memberikan saran yang lebih personal dan relevan, mengatasi masalah data yang tidak lengkap dan menghasilkan rekomendasi yang lebih sesuai dengan preferensi pengguna.
 
-**Pentingnya Proyek**
+**Pentingnya Proyek** 🤔
 
 Proyek ini memiliki peranan penting karena:
 1. Peningkatan Pengalaman Pengguna: Mempermudah pengguna dalam menemukan ponsel yang sesuai dengan preferensi mereka, sehingga meningkatkan kepuasan dan kualitas pengalaman pengguna.
@@ -17,24 +18,22 @@ Proyek ini memiliki peranan penting karena:
 ## Business Understanding
 
 ### Problem Statements
-- Bagaimana kita bisa membantu pengguna menemukan ponsel yang paling sesuai dengan kebutuhan dan preferensi mereka?
-- Bagaimana kita bisa membantu pengguna menemukan ponsel yang mirip dengan ponsel lamanya meskipun pengguna tidak mengerti spesifikasi teknis ponsel lamanya?
+- Bagaimana kita dapat membantu pengguna menemukan ponsel yang paling cocok dengan kebutuhan dan preferensi mereka?
+- Bagaimana kita dapat membantu pengguna menemukan ponsel yang serupa dengan ponsel lama mereka, meskipun mereka tidak memahami spesifikasi teknis ponsel tersebut?
 
-### Goals
-Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-- Mengembangkan sistem rekomendasi yang dapat memberikan daftar ponsel terbaik berdasarkan preferensi pengguna (Rating terhadap ponsel lama nya).
-- Membangun sistem rekomendasi yang dapat memberikan daftar ponsel terbaik berdasarkan model ponsel lamanya (Contoh: iPhone XR).
+### Tujuan 
+- Membangun sistem rekomendasi yang dapat menyajikan daftar ponsel terbaik sesuai dengan preferensi pengguna
+- Mengembangkan sistem rekomendasi yang dapat memberikan daftar ponsel terbaik berdasarkan model ponsel lama pengguna (misalnya: iPhone 13).
 
-### Solution statements
-- Content-Based Filtering: Menggunakan fitur deskriptif dari ponsel (brand, model, dan operating system) untuk memberikan rekomendasi.
-- Collaborative Filtering: Menggunakan data rating dari pengguna untuk memberikan rekomendasi berdasarkan kesamaan preferensi dengan pengguna lain.
+### Solution statements 💡
+- **Content-Based Filtering**: Mengandalkan fitur deskriptif ponsel (seperti merek, model, dan sistem operasi) untuk memberikan rekomendasi yang relevan.
+- **Collaborative Filtering**: Memanfaatkan data rating dari pengguna untuk memberikan rekomendasi berdasarkan kesamaan preferensi dengan pengguna lain.
 
 ## Data Understanding
-Dataset yang digunakan berisi informasi mengenai berbagai model ponsel, termasuk brand, model, operating system, dan beberapa fitur lainnya. Dataset ini dapat diunduh dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
-
-Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
-
-Cellphones data memiliki jumlah baris 33 dan kolom 32 tanpa missing value. Dataset ini berisikan tentang spesifikasi detail dari sebuah handphone, berikut adalah cellphones data info dan sampel data:
+Dataset yang digunakan mencakup informasi tentang berbagai model ponsel, seperti merek, model, sistem operasi, serta beberapa fitur lainnya. Dataset ini berasal dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
+    - Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
+    - Data ponsel terdiri dari 33 baris dan 32 kolom tanpa adanya nilai yang hilang. Dataset ini memuat spesifikasi rinci dari setiap ponsel, berikut adalah informasi dan contoh data dari data ponsel:
+    
 |   Column           |  Dtype   |
 |--------------------|----------|
 | cellphone_id       | int64    |
@@ -112,7 +111,7 @@ Variabel-variabel pada dataset adalah sebagai berikut:
   - `gender`: Jenis kelamin pengguna.
   - `occupation`: Pekerjaan pengguna.
 
-**Exploratory Data Analysis (EDA)**
+### Exploratory Data Analysis (EDA) 🔍
 - Distribusi Brand Ponsel
   ![Distribusi Brand Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image1.png)
   - Gambar ini menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
@@ -140,8 +139,9 @@ Variabel-variabel pada dataset adalah sebagai berikut:
   - Rating yang lebih rendah, seperti 2, 3, dan 4, memiliki jumlah yang lebih sedikit.
   - Sebagian besar ponsel dalam dataset mendapatkan rating yang cukup tinggi (7-10).
 
-## Data Preparation
-**Teknik Data Preparation**
+## Data Preparation ⚙️
+
+### Teknik Data Preparation
 - Menggabungkan dataset menjadi satu.
 - Handling Missing Values: Menghapus atau mengisi nilai yang hilang dalam dataset.
 - Removing Outliers: Menghapus data yang memiliki nilai outliers pada kolom tertentu.
@@ -149,7 +149,7 @@ Variabel-variabel pada dataset adalah sebagai berikut:
 - Mereplace value.
 - Pembagian dataset untuk train-test (80:20).
 
-**Proses Data Preparation**
+### Proses Data Preparation
 - Menggabungkan dataset cellphones data, cellphones rating, dan cellphones user menjadi satu dataframe.
 - Menghapus nilai Null pada kolom `occupation`.
 - Menghapus outlier pada kolom `rating` yang memiliki value 18.
@@ -164,7 +164,7 @@ Variabel-variabel pada dataset adalah sebagai berikut:
 | Train            | 791    |
 | Test             | 198    |
 
-**Alasan Tahapan Data Preparation**
+### Alasan Tahapan Data Preparation
   - Handling Missing Values: Untuk memastikan tidak ada data yang hilang yang dapat mempengaruhi hasil analisis dan model.
   - Removing outliers : Untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mempengaruhi performa model.
   - Mengubah format penulisan : Memasatikan bahwa memiliki value format penulisan yang sama sehingga tidak dianggap sebagai data yang berbeda padahal value yang sama.
@@ -173,7 +173,7 @@ Variabel-variabel pada dataset adalah sebagai berikut:
 ## Modeling
 Pada tahap ini akan membahas dua pendekatan utama yang digunakan dalam membangun sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering. Berikut adalah penjelasan lebih lanjut mengenai parameter yang digunakan, kelebihan, dan kekurangan dari masing-masing pendekatan, serta beberapa potongan kode yang relevan.
 
-**Model Sistem Rekomendasi Content Based Filtering**
+### Model Sistem Rekomendasi Content Based Filtering
 
 Content-Based Filtering menggunakan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi. Berikut adalah parameter untuk pendekatan ini.
 
@@ -217,7 +217,7 @@ Misalkan pengguna memiliki ponsel "iPhone XR" dan ingin mendapatkan rekomendasi 
   3. Menghitung cosine similarity antara vektor "iPhone XR" dan semua vektor ponsel lain dalam dataset.
   4. Mengembalikan daftar ponsel dengan similarity tertinggi ke "iPhone XR".
 
-**Top-N Recommendation Content Based Filtering**
+### Top-N Recommendation Content Based Filtering
 
 Menampilkan hasil rekomendasi
   - model_recommendations('iPhone XR')
@@ -238,7 +238,7 @@ Menampilkan hasil rekomendasi
   |2|Galaxy S22 Ultra|Samsung|Android|
   |3|Galaxy A13|Samsung|Android|
 
-**Model Sistem Rekomendasi Collaborative Filtering (Alternatif)**
+### Model Sistem Rekomendasi Collaborative Filtering (Alternatif)
 
 Collaborative Filtering menggunakan interaksi pengguna-item (rating) untuk memberikan rekomendasi. Berikut adalah parameter untuk pendekatan ini.
 
@@ -275,7 +275,7 @@ Misalkan pengguna dengan ID 237 memiliki beberapa ponsel dengan rating tinggi da
 2. Menggunakan model yang dilatih untuk memprediksi rating ponsel yang belum diulas oleh pengguna 237.
 3. Mengembalikan daftar ponsel dengan prediksi rating tertinggi.
 
-**Top-N Recommendation Collaborative Filtering (Alternatif)**
+### Top-N Recommendation Collaborative Filtering (Alternatif)
 ```
 Showing recommendations for users: 237
 ===========================
@@ -300,7 +300,7 @@ Apple : iPhone 13 Mini
 Google : Pixel 6 Pro 
 Apple : iPhone 13 Pro Max
 ```
-**Kelebihan dan Kekurangan Pendekatan**
+### Kelebihan dan Kekurangan Pendekatan
 
 1. Content Based Filtering
   - Kelebihan:
@@ -324,7 +324,7 @@ Apple : iPhone 13 Pro Max
 ## Evaluation
 Pada bagian ini, akan mengevaluasi model rekomendasi yang telah dibangun menggunakan metrik evaluasi yang tepat. Untuk model prediksi rating, kita akan menggunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Selain itu, akan mengevaluasi apakah proyek ini berhasil menjawab problem statement dan memberikan solusi yang diinginkan.
 
-**Metrik Evaluasi**
+### Metrik Evaluasi 📈
 
 Root Mean Squared Error (RMSE) adalah akar kuadrat dari rata-rata kuadrat kesalahan. Ini memberikan gambaran seberapa jauh prediksi model berbeda dari nilai sebenarnya dalam satuan yang sama dengan variabel yang diprediksi. RMSE sangat berguna karena memberikan penalti lebih besar untuk kesalahan yang lebih besar.
 
@@ -341,7 +341,8 @@ Di mana:
 - RMSE yang kecil mengindikasikan bahwa model memiliki performa yang baik karena kesalahan antara prediksi dan nilai aktual rendah.
 - RMSE yang besar mengindikasikan bahwa model memiliki performa yang buruk karena kesalahan antara prediksi dan nilai aktual tinggi.
 
-**Hasil Proyek**
+## Hasil 
+
 |            | Train  | Test  |
 |------------|------- |-------|
 | RMSE       | 0.2063 | 0.6416|
@@ -351,14 +352,14 @@ Di mana:
 
 RMSE yang dihitung memberikan indikasi bahwa model prediksi rating memiliki tingkat kesalahan yang dapat diterima, sehingga memadai untuk tujuan rekomendasi.
 
-**Evaluasi Terhadap Business Understanding**
+### Evaluasi Terhadap Business Understanding
 - Menjawab Problem Statement: Model yang dibuat berhasil menjawab problem statement dengan memberikan rekomendasi ponsel berdasarkan model yang ada dan memprediksi rating ponsel yang belum diulas oleh pengguna. Pendekatan content-based filtering menggunakan model ponsel untuk memberikan rekomendasi yang relevan berdasarkan kesamaan model, brand, dan operating system, sementara collaborative filtering memanfaatkan interaksi pengguna-item (rating) untuk menemukan pola preferensi pengguna.
 
 - Mencapai Goals: Model content-based filtering dengan cosine similarity dan collaborative filtering dengan RecommenderNet berhasil mencapai tujuan untuk memberikan rekomendasi ponsel yang relevan. Content-based filtering menggunakan data deskriptif yaitu model ponsel untuk membuat profil item, sehingga meningkatkan akurasi rekomendasi dengan memperhitungkan kesamaan fitur (model, brand, operating system). Di sisi lain, collaborative filtering memanfaatkan data rating dari pengguna untuk menemukan pola preferensi dan merekomendasikan ponsel yang sesuai dengan kesukaan pengguna.
 
 - Dampak dari Solution Statement: Penggunaan beberapa pendekatan algoritma (content-based dan collaborative filtering) dan teknik evaluasi seperti RMSE memberikan dampak positif dengan meningkatkan relevansi dan akurasi rekomendasi. Content-based filtering memastikan bahwa model ponsel yang diberikan dapat memberikan rekomendasi yang relevan dengan ponsel lamanya karena mempertimbangkan kesamaan fitur (model, brand, operating system) bagi pengguna. Sementara itu, collaborative filtering memungkinkan sistem untuk memahami preferensi pengguna berdasarkan interaksi sebelumnya, memberikan rekomendasi yang dipersonalisasi. Solusi yang direncanakan memberikan hasil yang signifikan dalam mencapai tujuan proyek, memastikan bahwa rekomendasi yang diberikan sesuai dengan kebutuhan dan preferensi pengguna.
 
-## Kesimpulan
+## Kesimpulan 👀
 Dengan menggunakan kedua pendekatan ini, kita dapat membangun sistem rekomendasi yang lebih robust dan fleksibel. Content-Based Filtering cocok untuk memberikan rekomendasi berdasarkan fitur-fitur item itu sendiri, sementara Collaborative Filtering efektif dalam menemukan pola-pola preferensi pengguna dari data interaksi yang ada. Memahami kelebihan dan kekurangan masing-masing pendekatan membantu kita memilih metode yang paling sesuai dengan kebutuhan dan konteks spesifik dari sistem rekomendasi yang sedang dibangun.
 
 ## Referensi
