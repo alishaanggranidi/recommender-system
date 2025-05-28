@@ -33,7 +33,7 @@ Proyek ini memiliki peranan penting karena:
 Dataset yang digunakan mencakup informasi tentang berbagai model ponsel, seperti merek, model, sistem operasi, serta beberapa fitur lainnya. Dataset ini berasal dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
     - Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
     - Data ponsel terdiri dari 33 baris dan 32 kolom tanpa adanya nilai yang hilang. Dataset ini memuat spesifikasi rinci dari setiap ponsel, berikut adalah informasi dan contoh data dari data ponsel:
-    
+
 |   Column           |  Dtype   |
 |--------------------|----------|
 | cellphone_id       | int64    |
@@ -51,10 +51,10 @@ Dataset yang digunakan mencakup informasi tentang berbagai model ponsel, seperti
 | price              | int64    |
 | release date       | object   |
 
-|index|cellphone\_id|brand|model|operating system|internal memory|RAM|performance|main camera|selfie camera|battery size|screen size|weight|price|release date|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|0|0|Apple|iPhone SE \(2022\)|iOS|128|4|7\.23|12|7|2018|4\.7|144|429|18/03/2022|
-|1|1|Apple|iPhone 13 Mini|iOS|128|4|7\.72|12|12|2438|5\.4|141|699|24/09/2021|
+| index | cellphone_id | brand  | model            | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
+|-------|--------------|--------|------------------|------------------|-----------------|-----|-------------|-------------|---------------|--------------|-------------|--------|-------|--------------|
+| 0     | 0            | Apple  | iPhone SE (2022) | iOS              | 128             | 4   | 7.23        | 12          | 7             | 2018         | 4.7         | 144    | 429   | 18/03/2022   |
+| 1     | 1            | Apple  | iPhone 13 Mini   | iOS              | 128             | 4   | 7.72        | 12          | 12            | 2438         | 5.4         | 141    | 699   | 24/09/2021   |
 
 Cellphones rating memiliki 990 baris dan 3 kolom tanpa missing value. Dataset ini berisikan nilai rating yang diberikan user X terhadap cellphone Y, berikut adalah cellphones rating info dan sampel data:
 
