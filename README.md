@@ -53,13 +53,14 @@ Dataset ini memuat spesifikasi rinci dari setiap ponsel, berikut adalah informas
 | price              | int64    |
 | release date       | object   |
 
-contoh data dari data ponsel:
+Berikut contoh data dari data cellphone: 
 
 | user_id | cellphone_id | rating | brand   | model       | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
 |---------|--------------|--------|---------|--------------|------------------|-----------------|-----|-------------|-------------|---------------|--------------|-------------|--------|-------|--------------|
 | 1       | 0            | 5      | Apple   | iPhone XR     | iOS              | 64              | 3   | 4.22        | 12          | 7             | 2942         | 6.1         | 194    | 236   | 26/10/2018   |
 | 2       | 0            | 10     | Samsung | Galaxy S22    | Android          | 128             | 8   | 8.81        | 50          | 10            | 3700         | 6.1         | 167    | 528   | 25/02/2022   |
 
+*****************************************************************
 Cellphones rating memiliki 990 baris dan 3 kolom tanpa missing value. Dataset ini berisikan nilai rating yang diberikan user X terhadap cellphone Y, berikut adalah cellphones rating info dan sampel data:
 
 |   Column           |  Dtype   |
