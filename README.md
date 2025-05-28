@@ -118,7 +118,7 @@ Variabel-variabel pada dataset adalah sebagai berikut:
 
 ### Exploratory Data Analysis (EDA) 🔍
 - Distribusi Brand Ponsel
-  ![Distribusi Brand Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image1.png)
+  ![Distribusi Brand](.images/outputcode.png)
   - Gambar ini menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
   - Samsung memiliki jumlah ponsel terbanyak dengan 8 unit.
   - Apple berada di posisi kedua dengan 6 unit.
