@@ -143,51 +143,40 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 ## Data Preparation ⚙️
 
 ### Teknik Data Preparation
-- Menggabungkan dataset menjadi satu.
-- Handling Missing Values: Menghapus atau mengisi nilai yang hilang dalam dataset.
-- Removing Outliers: Menghapus data yang memiliki nilai outliers pada kolom tertentu.
+- Menggabungkan seluruh dataset menjadi satu.
+- Menangani Missing Values: Menghapus atau mengisi data yang hilang dalam dataset.
+- Removing Outliers: Mengeliminasi data dengan nilai outliers pada kolom tertentu.
 - Mengubah format penulisan. 
-- Mereplace value.
+- Mengganti nilai-nilai tertentu.
 - Pembagian dataset untuk train-test (80:20).
 
 ### Proses Data Preparation
-- Menggabungkan dataset cellphones data, cellphones rating, dan cellphones user menjadi satu dataframe.
+- Menggabungkan dataset `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe.
 - Menghapus nilai Null pada kolom `occupation`.
-- Menghapus outlier pada kolom `rating` yang memiliki value 18.
-- Menghapus outlier pada kolom `gender` yang memiliki value -Select Gender-.
-- Value pada kolom `occupation` diubah menjadi lowercase.
-- Terdapat beberapa penulisan yang salah pada kolom `occupation`. Value 'Healthare' menjadi 'healthcare' dan value 'it' menjadi 'information technology'.
-- Pembagian dataset train-test dengan skema 80:20.
-
-|                  | Jumlah |
-|------------------|------- |
-| Whole Dataset    | 989    |
-| Train            | 791    |
-| Test             | 198    |
+- Menghapus outlier pada kolom `rating` yang memiliki nilai 18.
+- Menghapus outlier pada kolom `gender` yang memiliki nilai -Select Gender-.
+- Mengubah semua nilai pada kolom `occupation` menjadi huruf kecil.
+- Memperbaiki penulisan yang salah pada kolom `occupation`, seperti mengganti nilai 'Healthare' menjadi 'healthcare' dan 'it' menjadi 'information technology'.
+- Membagi dataset menjadi train dan test dengan proporsi 80:20.
 
 ### Alasan Tahapan Data Preparation
-  - Handling Missing Values: Untuk memastikan tidak ada data yang hilang yang dapat mempengaruhi hasil analisis dan model.
-  - Removing outliers : Untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mempengaruhi performa model.
-  - Mengubah format penulisan : Memasatikan bahwa memiliki value format penulisan yang sama sehingga tidak dianggap sebagai data yang berbeda padahal value yang sama.
-  - Mereplace value : Mengubah beberapa nilai karena memiliki kesalahan penulisan.
+  - Handling Missing Values: Agar tidak ada data yang hilang yang dapat memengaruhi hasil analisis dan model.
+  - Removing outliers : Untuk meningkatkan akurasi model dengan menghilangkan data yang dapat memengaruhi kinerja model.
+  - Menyesuaikan format penulisan : Memastikan bahwa nilai memiliki format penulisan yang seragam, sehingga tidak dianggap sebagai data yang berbeda meskipun nilainya sama.
+  - Mengganti value: Memperbaiki beberapa nilai yang mengandung kesalahan penulisan.
 
 ## Modeling
-Pada tahap ini akan membahas dua pendekatan utama yang digunakan dalam membangun sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering. Berikut adalah penjelasan lebih lanjut mengenai parameter yang digunakan, kelebihan, dan kekurangan dari masing-masing pendekatan, serta beberapa potongan kode yang relevan.
+Pada tahap modeling, akan dibahas dua pendekatan utama yang digunakan dalam pembangunan sistem rekomendasi, yaitu: Content-Based Filtering dan Collaborative Filtering. Penjelasan berikut mencakup parameter yang digunakan, kelebihan dan kekurangan dari masing-masing pendekatan, serta contoh potongan kode yang relevan.
 
 ### Model Sistem Rekomendasi Content Based Filtering
 
-Content-Based Filtering menggunakan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi. Berikut adalah parameter untuk pendekatan ini.
-
-Parameter yang Digunakan:
-  - TF-IDF Vectorizer: Untuk mengubah deskripsi teks menjadi vektor numerik.
-  - Cosine Similarity: Untuk menghitung kesamaan antara vektor item.
+Content-Based Filtering memanfaatkan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi. Berikut adalah parameter yang digunakan dalam pendekatan ini:
 
 Tahapan proses:
-
-- Karena TF-IDF hanya cocok untuk data teks maka hanya kolom yang bertipe object saja yang dipilih.
+- Karena TF-IDF hanya cocok digunakan untuk data teks, maka hanya kolom dengan tipe data objek yang dipilih.
   ```python
   #Dataframe yang digunakan
-  phone_new = pd.DataFrame({
+  data_dict = pd.DataFrame({
       'cellphone_id': cellphone_id,
       'brand': brand,
       'model': model,
@@ -221,25 +210,25 @@ Misalkan pengguna memiliki ponsel "iPhone XR" dan ingin mendapatkan rekomendasi 
 ### Top-N Recommendation Content Based Filtering
 
 Menampilkan hasil rekomendasi
-  - model_recommendations('iPhone XR')
+  - model_recommendations('Galaxy S22 Ultra')
 
   |index|model|brand|operating\_system|
   |---|---|---|---|
-  |0|iPhone 13 Pro Max|Apple|iOS|
-  |1|iPhone SE \(2022\)|Apple|iOS|
-  |2|iPhone 13 Pro|Apple|iOS|
-  |3|iPhone 13|Apple|iOS|
+  |0|Galaxy Z Flip 3 |Samsung|Android|
+  |1|Galaxy S22 Plus \(2022\)|Samsung|Android|
+  |2|Galaxy Z Fold 3|Samsung|Android|
+  |3|Galaxy A32|Samsung|Android|
 
   - model_recommendations('Galaxy S22')
 
   |index|model|brand|operating\_system|
   |---|---|---|---|
-  |0|Galaxy S22 Plus|Samsung|Android|
-  |1|Galaxy Z Fold 3|Samsung|Android|
-  |2|Galaxy S22 Ultra|Samsung|Android|
-  |3|Galaxy A13|Samsung|Android|
+  |0|iPhone 13 Mini|Apple|iOS|
+  |1|iPhone SE (2022)|Apple|iOS|
+  |2|iPhone XR|Apple|iOS|
+  |3|iPhone 13 Pro|Apple|iOS|
 
-### Model Sistem Rekomendasi Collaborative Filtering (Alternatif)
+### Model Sistem Rekomendasi Collaborative Filtering 
 
 Collaborative Filtering menggunakan interaksi pengguna-item (rating) untuk memberikan rekomendasi. Berikut adalah parameter untuk pendekatan ini.
 
@@ -276,30 +265,30 @@ Misalkan pengguna dengan ID 237 memiliki beberapa ponsel dengan rating tinggi da
 2. Menggunakan model yang dilatih untuk memprediksi rating ponsel yang belum diulas oleh pengguna 237.
 3. Mengembalikan daftar ponsel dengan prediksi rating tertinggi.
 
-### Top-N Recommendation Collaborative Filtering (Alternatif)
+### Top-N Recommendation Collaborative Filtering 
 ```
-Showing recommendations for users: 237
+Showing recommendations for users: 10
 ===========================
 cellphone with high ratings from user
 --------------------------------
-Oppo : Find X5 Pro
-OnePlus : Nord 2T
-OnePlus : 10 Pro
-Apple : iPhone 13
-Xiaomi : 11T Pro
+Vivo : X80 Pro
+Apple : iPhone 13 Pro
+Apple : iPhone 13 Pro Max
+Xiaomi : Poco F4
+Samsung : Galaxy Z Fold 3
 --------------------------------
 Top 10 cellphone recommendation
 --------------------------------
-Apple : iPhone XR
 Samsung : Galaxy S22
 Samsung : Galaxy A53
-Vivo : X80 Pro
-Apple : iPhone 13 Pro
-Apple : iPhone SE (2022)
-Samsung : Galaxy S22 Ultra
+Oppo : Find X5 Pro
 Apple : iPhone 13 Mini
+Xiaomi : 11T Pro
+OnePlus : 10 Pro
+Apple : iPhone SE (2022)
 Google : Pixel 6 Pro 
-Apple : iPhone 13 Pro Max
+Xiaomi : 12 Pro
+Apple : iPhone 13
 ```
 ### Kelebihan dan Kekurangan Pendekatan
 
