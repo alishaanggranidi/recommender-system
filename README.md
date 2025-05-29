@@ -223,40 +223,34 @@ Menampilkan hasil rekomendasi
 
 ### Model Sistem Rekomendasi Collaborative Filtering 
 
-Collaborative Filtering menggunakan interaksi pengguna-item (rating) untuk memberikan rekomendasi. Berikut adalah parameter untuk pendekatan ini.
-
-Parameter yang Digunakan:
-  - loss = BinaryCrossentropy
-  - optimizer = Adam
-  - learning_rate = 0.001
-  - metrics = RootMeanSquaredError
+Collaborative Filtering menggunakan interaksi antara pengguna dan item (misalnya rating) untuk menghasilkan rekomendasi. Pada pendekatan ini, kita menggunakan beberapa parameter berikut:
 
 Tahapan proses:
-- Menggunakan dataframe rating (cellphones rating.csv)
-- Membuat class RecommenderNet dengan keras Model class
+1. Menggunakan dataframe ratings dari file `cellphones ratings.csv`
+2. Membuat class `RecommenderNet` mewarisi kelas `Model` Keras:
 ```python
 class RecommenderNet(tf.keras.Model):
   ...
   ...
 ```
-- Inisialisasi model menggunakan RecommenderNet dengan nilai embedding 50
-- Compile model menggunakan
-  - loss = BinaryCrossentropy
-  - optimizer = Adam
-  - learning_rate = 0.001
-  - metrics = RootMeanSquaredError
-- Melakukan training model menggunakan 
+3. Inisialisasi model dengan nilai embedding sebesar 50.
+4. Compile model menggunakan:
+  - loss = `BinaryCrossentropy`
+  - optimizer = `Adam`
+  - learning_rate = `0.001`
+  - metrics = `RootMeanSquaredError`
+5. Melakukan proses training model dengan parameter 
   - batch_size = 8
   - epochs = 100
 
 Bagaimana Algoritma Bekerja:
-- Collaborative Filtering menggunakan interaksi pengguna-item (rating) untuk memberikan rekomendasi. Algoritma ini bekerja dengan cara memprediksi rating item yang belum diulas pengguna berdasarkan rating item yang mirip oleh pengguna lain. Model ini mempelajari pola preferensi pengguna dari data rating yang ada dan menggunakan pola tersebut untuk merekomendasikan item yang mungkin disukai pengguna.
+- Collaborative Filtering menggunakan interaksi antara pengguna dan item (seperti rating) untuk menghasilkan rekomendasi. Algoritma ini berfungsi dengan memprediksi rating untuk item yang belum diulas oleh pengguna, berdasarkan rating yang diberikan oleh pengguna lain untuk item serupa. Model ini mempelajari pola preferensi pengguna dari data rating yang ada, dan menggunakan pola tersebut untuk memberikan rekomendasi item yang kemungkinan besar akan disukai oleh pengguna.
 
 Interaksi dengan Sampel Input:
-Misalkan pengguna dengan ID 10 memiliki beberapa ponsel dengan rating tinggi dan ingin mendapatkan rekomendasi. Algoritma akan:
+Misalnya, pengguna dengan ID 10 memiliki beberapa ponsel dengan rating tinggi dan ingin menerima rekomendasi. Algoritma akan:
 1. Mengambil data rating dari pengguna lain yang memiliki preferensi serupa.
-2. Menggunakan model yang dilatih untuk memprediksi rating ponsel yang belum diulas oleh pengguna 10.
-3. Mengembalikan daftar ponsel dengan prediksi rating tertinggi.
+2. Menggunakan model yang sudah dilatih untuk memprediksi rating untuk ponsel yang belum diulas oleh pengguna 10.
+3. Menghasilkan daftar ponsel berdasarkan prediksi rating tertinggi.
 
 ### Top-N Recommendation Collaborative Filtering 
 ```
@@ -285,13 +279,14 @@ Apple : iPhone 13
 ```
 *****************************************************************
 *Untuk tahapan proses yang lebih lengkap silahkan baca [Dicoding_ModelSistemRekomendasi.ipynb](https://github.com/alishaanggranidi/recommender-system/blob/main/Recommender_System.ipynb)*
+*****************************************************************
 
 ## Evaluation
-Pada bagian ini, akan mengevaluasi model rekomendasi yang telah dibangun menggunakan metrik evaluasi yang tepat. Untuk model prediksi rating, kita akan menggunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Selain itu, akan mengevaluasi apakah proyek ini berhasil menjawab problem statement dan memberikan solusi yang diinginkan.
+Pada bagian ini, model rekomendasi yang telah dibangun akan dievaluasi menggunakan metrik evaluasi yang sesuai. Untuk model prediksi rating, kami akan menggunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Selain itu, evaluasi juga akan dilakukan untuk menentukan apakah proyek ini berhasil menjawab pernyataan masalah dan memberikan solusi yang diharapkan.
 
 ### Metrik Evaluasi 📈
 
-Root Mean Squared Error (RMSE) adalah akar kuadrat dari rata-rata kuadrat kesalahan. Ini memberikan gambaran seberapa jauh prediksi model berbeda dari nilai sebenarnya dalam satuan yang sama dengan variabel yang diprediksi. RMSE sangat berguna karena memberikan penalti lebih besar untuk kesalahan yang lebih besar.
+Root Mean Squared Error (RMSE) dalah akar kuadrat dari rata-rata kuadrat selisih antara prediksi dan nilai sebenarnya. Metrik ini menggambarkan sejauh mana prediksi model menyimpang dari nilai yang sebenarnya dalam satuan yang sama dengan variabel yang diprediksi. RMSE sangat berguna karena memberikan penalti yang lebih besar pada kesalahan yang lebih besar.
 
 $$
 \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
@@ -303,23 +298,23 @@ Di mana:
   - $\hat y_i$ adalah nilai prediksi
   - $n$ adalah jumlah observasi
 
-- RMSE yang kecil mengindikasikan bahwa model memiliki performa yang baik karena kesalahan antara prediksi dan nilai aktual rendah.
-- RMSE yang besar mengindikasikan bahwa model memiliki performa yang buruk karena kesalahan antara prediksi dan nilai aktual tinggi.
+- RMSE kecil menunjukkan performa model yang baik karena kesalahan prediksi rendah.
+- RMSE besar menunjukkan performa model yang buruk karena kesalahan prediksi tinggi.
 
 ## Hasil 
 ![Grafik train vs test](./images/outputcode5.png)
 
-RMSE yang dihitung memberikan indikasi bahwa model prediksi rating memiliki tingkat kesalahan yang dapat diterima, sehingga memadai untuk tujuan rekomendasi.
+Berdasarkan gambar tersebut RMSE yang dihitung menunjukkan bahwa model prediksi rating memiliki tingkat kesalahan yang dapat diterima, sehingga cukup memadai untuk tujuan rekomendasi.
 
 ### Evaluasi Terhadap Business Understanding
-- Menjawab Problem Statement: Model yang dibuat berhasil menjawab problem statement dengan memberikan rekomendasi ponsel berdasarkan model yang ada dan memprediksi rating ponsel yang belum diulas oleh pengguna. Pendekatan content-based filtering menggunakan model ponsel untuk memberikan rekomendasi yang relevan berdasarkan kesamaan model, brand, dan operating system, sementara collaborative filtering memanfaatkan interaksi pengguna-item (rating) untuk menemukan pola preferensi pengguna.
+Model yang dikembangkan berhasil menjawab problem statement dengan memberikan rekomendasi ponsel berdasarkan model yang ada dan memprediksi rating ponsel yang belum diulas oleh pengguna. Pendekatan content-based filtering memanfaatkan data deskriptif seperti model, brand, dan operating system untuk memberikan rekomendasi ponsel yang relevan, sementara collaborative filtering menggunakan interaksi pengguna-item (rating) untuk menemukan pola preferensi pengguna.
 
-- Mencapai Goals: Model content-based filtering dengan cosine similarity dan collaborative filtering dengan RecommenderNet berhasil mencapai tujuan untuk memberikan rekomendasi ponsel yang relevan. Content-based filtering menggunakan data deskriptif yaitu model ponsel untuk membuat profil item, sehingga meningkatkan akurasi rekomendasi dengan memperhitungkan kesamaan fitur (model, brand, operating system). Di sisi lain, collaborative filtering memanfaatkan data rating dari pengguna untuk menemukan pola preferensi dan merekomendasikan ponsel yang sesuai dengan kesukaan pengguna.
+Model content-based filtering menggunakan cosine similarity dan collaborative filtering dengan RecommenderNet berhasil mencapai tujuan untuk memberikan rekomendasi yang relevan. Content-based filtering membuat profil item berdasarkan kesamaan fitur, meningkatkan akurasi rekomendasi, sedangkan collaborative filtering memanfaatkan data rating pengguna untuk memahami preferensi dan memberikan rekomendasi yang sesuai.
 
-- Dampak dari Solution Statement: Penggunaan beberapa pendekatan algoritma (content-based dan collaborative filtering) dan teknik evaluasi seperti RMSE memberikan dampak positif dengan meningkatkan relevansi dan akurasi rekomendasi. Content-based filtering memastikan bahwa model ponsel yang diberikan dapat memberikan rekomendasi yang relevan dengan ponsel lamanya karena mempertimbangkan kesamaan fitur (model, brand, operating system) bagi pengguna. Sementara itu, collaborative filtering memungkinkan sistem untuk memahami preferensi pengguna berdasarkan interaksi sebelumnya, memberikan rekomendasi yang dipersonalisasi. Solusi yang direncanakan memberikan hasil yang signifikan dalam mencapai tujuan proyek, memastikan bahwa rekomendasi yang diberikan sesuai dengan kebutuhan dan preferensi pengguna.
+Dengan menggunakan kedua algoritma ini, solusi yang direncanakan memberikan dampak positif dalam meningkatkan relevansi dan akurasi rekomendasi. Content-based filtering memastikan rekomendasi yang relevan dengan mempertimbangkan kesamaan fitur, sementara collaborative filtering memungkinkan sistem memahami preferensi pengguna dari interaksi sebelumnya, menghasilkan rekomendasi yang lebih personal. Hasilnya menunjukkan bahwa pendekatan ini berhasil mencapai tujuan proyek dan memberikan rekomendasi yang sesuai dengan kebutuhan pengguna.
 
 ## Kesimpulan 👀
-Dengan menggunakan kedua pendekatan ini, kita dapat membangun sistem rekomendasi yang lebih robust dan fleksibel. Content-Based Filtering cocok untuk memberikan rekomendasi berdasarkan fitur-fitur item itu sendiri, sementara Collaborative Filtering efektif dalam menemukan pola-pola preferensi pengguna dari data interaksi yang ada. Memahami kelebihan dan kekurangan masing-masing pendekatan membantu kita memilih metode yang paling sesuai dengan kebutuhan dan konteks spesifik dari sistem rekomendasi yang sedang dibangun.
+Kombinasi kedua pendekatan ini membangun sistem rekomendasi yang lebih kuat dan fleksibel. Content-Based Filtering cocok untuk memberikan rekomendasi berdasarkan fitur item, sementara Collaborative Filtering efektif dalam menemukan pola preferensi pengguna dari data interaksi. Memahami kelebihan dan kekurangan masing-masing pendekatan membantu memilih metode yang tepat sesuai dengan kebutuhan dan konteks sistem rekomendasi yang sedang dibangun.
 
 ## Referensi
 
