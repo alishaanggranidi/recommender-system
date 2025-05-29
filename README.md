@@ -73,7 +73,7 @@ Berikut adalah contoh data dari cellphones rating:
 
 |index|user\_id|cellphone\_id|rating|
 |---|---|---|---|
-|0|0|30|1|
+|0|2|10|9|
 |1|0|5|3|
 
 *****************************************************************
@@ -92,7 +92,7 @@ Berikut adalah contoh data dari cellphones users:
 |index|user\_id|age|gender|occupation|
 |---|---|---|---|---|
 |0|0|38|Female|Data analyst|
-|1|1|40|Female|team worker in it|
+|1|2|55|Female|IT|
 
 #### Variabel dalam dataset
 Berikut adalah variabel-variabel yang terdapat dalam dataset:
@@ -126,10 +126,10 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 ### Exploratory Data Analysis (EDA) 🔍
 - Distribusi Brand Ponsel
   ![Distribusi Brand](./images/outputcode.png)
-  - Gambar ini menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
-  - Samsung memiliki jumlah ponsel terbanyak dengan 8 unit.
-  - Apple berada di posisi kedua dengan 6 unit.
-  - Brand Asus, Oppo, Vivo, dan Sony memiliki jumlah yang lebih sedikit.  
+  - Gambar tersebut menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
+    - Brand `Samsung` memiliki jumlah terbanyak,  yaitu 8 unit.
+    - Brand `Apple` berada di posisi kedua dengan 6 unit.
+    - Brand `Asus`, `Oppo`, `Vivo`, dan `Sony` memiliki jumlah yang lebih sedikit.
 
 - Distribusi Sistem Operasi Ponsel
   ![Distribusi Sistem Operasi Ponsel](./images/outputcode2.png)
