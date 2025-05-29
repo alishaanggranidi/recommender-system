@@ -126,30 +126,19 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 ### Exploratory Data Analysis (EDA) 🔍
 - Distribusi Brand Ponsel
   ![Distribusi Brand](./images/outputcode.png)
-  - Gambar tersebut menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
-    - Brand `Samsung` memiliki jumlah terbanyak,  yaitu 8 unit.
-    - Brand `Apple` berada di posisi kedua dengan 6 unit.
-    - Brand `Asus`, `Oppo`, `Vivo`, dan `Sony` memiliki jumlah yang lebih sedikit.
+  - Gambar tersebut menunjukkan distribusi jumlah ponsel berdasarkan brand dalam dataset, di mana brand `Samsung` mencatatkan jumlah terbanyak dengan 8 unit, diikuti oleh `Apple` dengan 6 unit. Sementara itu, brand `Asus`, `Oppo`, `Vivo`, dan `Sony` memiliki jumlah ponsel yang lebih sedikit.
 
 - Distribusi Sistem Operasi Ponsel
-  ![Distribusi Sistem Operasi Ponsel](./images/outputcode2.png)
-  - Gambar ini menunjukkan distribusi sistem operasi pada ponsel dalam dataset.
-  - Android merupakan sistem operasi yang paling umum dengan lebih dari 25 unit.
-  - iOS memiliki sekitar 6 unit.
+  ![Distribusi Sistem Operasi](./images/outputcode2.png)
+  - Gambar tersebut menunjukkan distribusi sistem operasi pada ponsel dalam dataset, di mana `Android` merupakan sistem operasi yang paling dominan dengan lebih dari 25 unit, sementara `iOS` tercatat memiliki sekitar 6 unit.
 
 - Distribusi Tahun Rilis Ponsel
-  ![Distribusi Tahun Rilis Ponsel](./images/outputcode3.png)
-  - Gambar ini menunjukkan distribusi ponsel berdasarkan tahun rilis.
-  - Tahun 2021 dan 2022 memiliki jumlah ponsel yang hampir sama, masing-masing lebih dari 15 unit.
-  - Tahun 2018 memiliki jumlah ponsel yang sangat sedikit.
-  - Ponsel yang dirilis pada tahun 2018 memiliki representasi yang sangat rendah, menunjukkan bahwa dataset lebih fokus pada model-model terbaru.
+  ![Distribusi Tahun Rilis](./images/outputcode3.png)
+  - Gambar tersebut menunjukkan distribusi ponsel berdasarkan tahun rilis, di mana tahun `2021` dan `2022` mencatatkan jumlah ponsel yang hampir sama, masing-masing lebih dari 15 unit. Sementara itu, tahun `2018` hanya memiliki jumlah ponsel yang sangat sedikit, menunjukkan bahwa dataset lebih dominan pada model-model terbaru.
 
 - Distribusi Rating Ponsel
-  ![Distribusi Tahun Rilis Ponsel](./images/outputcode4.png)
-  - Gambar ini menunjukkan distribusi rating yang diberikan pengguna untuk ponsel dalam dataset.
-  - Rating 8 adalah yang paling umum, diikuti oleh rating 7 dan 10.
-  - Rating yang lebih rendah, seperti 2, 3, dan 4, memiliki jumlah yang lebih sedikit.
-  - Sebagian besar ponsel dalam dataset mendapatkan rating yang cukup tinggi (7-10).
+  ![Distribusi Tahun Rilis ](./images/outputcode4.png)
+  - Gambar tersebut menunjukkan distribusi rating yang diberikan pengguna untuk ponsel dalam dataset, di mana rating `8 ` merupakan yang paling umum, diikuti oleh rating `7` dan `10`. Rating yang lebih rendah, seperti `2`, `3`, dan `4`, tercatat memiliki jumlah yang lebih sedikit. Secara keseluruhan, sebagian besar ponsel dalam dataset mendapatkan rating yang cukup tinggi, yaitu antara `7` hingga`10`.
 
 ## Data Preparation ⚙️
 
@@ -331,7 +320,7 @@ Apple : iPhone 13 Pro Max
   - Kekurangan:
     - Cold Start Problem: Kesulitan merekomendasikan item baru atau kepada pengguna baru yang belum memiliki cukup interaksi.
 
-*Untuk tahapan proses yang lebih lengkap silahkan baca [Dicoding_ModelSistemRekomendasi.ipynb](https://github.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/blob/main/Dicoding_ModelSistemRekomendasi.ipynb)*
+*Untuk tahapan proses yang lebih lengkap silahkan baca [Dicoding_ModelSistemRekomendasi.ipynb](https://github.com/alishaanggranidi/recommender-system/blob/main/Recommender_System.ipynb)*
 
 ## Evaluation
 Pada bagian ini, akan mengevaluasi model rekomendasi yang telah dibangun menggunakan metrik evaluasi yang tepat. Untuk model prediksi rating, kita akan menggunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Selain itu, akan mengevaluasi apakah proyek ini berhasil menjawab problem statement dan memberikan solusi yang diinginkan.
