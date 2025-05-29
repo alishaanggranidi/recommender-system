@@ -29,7 +29,7 @@ Proyek ini memiliki peranan penting karena:
 - **Content-Based Filtering**: Mengandalkan fitur deskriptif ponsel (seperti merek, model, dan sistem operasi) untuk memberikan rekomendasi yang relevan.
 - **Collaborative Filtering**: Memanfaatkan data rating dari pengguna untuk memberikan rekomendasi berdasarkan kesamaan preferensi dengan pengguna lain.
 
-## Data Understanding
+## 📂 Data Understanding 
 Dataset yang digunakan mencakup informasi tentang berbagai model ponsel, seperti merek, model, sistem operasi, serta beberapa fitur lainnya. Dataset ini berasal dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
     - Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
     - Data ponsel terdiri dari 33 baris dan 32 kolom tanpa adanya nilai yang hilang. 
@@ -53,15 +53,15 @@ Dataset ini memuat spesifikasi rinci dari setiap ponsel, berikut adalah informas
 | price              | int64    |
 | release date       | object   |
 
-Berikut contoh data dari data cellphone: 
+Berikut adalah contoh data dari dataset cellphone:
 
-| user_id | cellphone_id | rating | brand   | model       | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
-|---------|--------------|--------|---------|--------------|------------------|-----------------|-----|-------------|-------------|---------------|--------------|-------------|--------|-------|--------------|
-| 1       | 0            | 5      | Apple   | iPhone XR     | iOS              | 64              | 3   | 4.22        | 12          | 7             | 2942         | 6.1         | 194    | 236   | 26/10/2018   |
-| 2       | 0            | 10     | Samsung | Galaxy S22    | Android          | 128             | 8   | 8.81        | 50          | 10            | 3700         | 6.1         | 167    | 528   | 25/02/2022   |
+| user_id | cellphone_id | rating | brand   | model      | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
+|---------|--------------|--------|---------|------------|------------------|-----------------|-----|-------------|-------------|---------------|--------------|-------------|--------|-------|--------------|
+| 1       | 0            | 5      | Apple   | iPhone XR  | ios              | 64              | 3   | 4.22        | 12          | 7             | 2942         | 6.1         | 194    | 236   | 26/10/2018   |
+| 2       | 0            | 10     | Samsung | Galaxy S22 | Android          | 128             | 8   | 8.81        | 50          | 10            | 3700         | 6.1         | 167    | 528   | 25/02/2022   |
 
 *****************************************************************
-Cellphones rating memiliki 990 baris dan 3 kolom tanpa missing value. Dataset ini berisikan nilai rating yang diberikan user X terhadap cellphone Y, berikut adalah cellphones rating info dan sampel data:
+Cellphones rating terdiri dari 990 baris dan 3 kolom tanpa adanya missing value. Dataset ini berisi nilai rating yang diberikan oleh pengguna X untuk ponsel Y, berikut adalah informasi dari cellphones rating:
 
 |   Column           |  Dtype   |
 |--------------------|----------|
@@ -69,12 +69,16 @@ Cellphones rating memiliki 990 baris dan 3 kolom tanpa missing value. Dataset in
 | cellphone_id       | int64    |
 | rating             | int64    |
 
+Berikut adalah contoh data dari cellphones rating:
+
 |index|user\_id|cellphone\_id|rating|
 |---|---|---|---|
 |0|0|30|1|
 |1|0|5|3|
 
-Cellphones users memiliki 99 baris dan 4 kolom tanpa missing value. Dataset ini berisikan data-data dari seorang user, berikut adalah cellphones users info dan sampel data:
+*****************************************************************
+
+Cellphones users terdiri dari 99 baris dan 4 kolom tanpa adanya missing value. Dataset ini berisi informasi tentang pengguna, berikut adalah informasi data dari cellphones users:
 
 |   Column           |  Dtype   |
 |--------------------|----------|
@@ -83,35 +87,38 @@ Cellphones users memiliki 99 baris dan 4 kolom tanpa missing value. Dataset ini 
 | gender             | object   |
 | occupation         | object   |
 
+Berikut adalah contoh data dari cellphones users:
+
 |index|user\_id|age|gender|occupation|
 |---|---|---|---|---|
 |0|0|38|Female|Data analyst|
 |1|1|40|Female|team worker in it|
 
-Variabel-variabel pada dataset adalah sebagai berikut:
+#### Variabel dalam dataset
+Berikut adalah variabel-variabel yang terdapat dalam dataset:
 - data:
-  - `cellphone_id`: ID unik untuk setiap ponsel.
+  - `cellphone_id`: Unik ID untuk setiap ponsel.
   - `brand`: Merek ponsel.
   - `model`: Model ponsel.
-  - `operating system`: Sistem operasi ponsel.
-  - `internal memory`: Memori internal ponsel dalam GB.
-  - `RAM`: RAM ponsel dalam GB.
+  - `operating system`: Sistem operasi yang digunakan oleh ponsel.
+  - `internal memory`: Kapasitas memori internal ponsel dalam GB.
+  - `RAM`: Kapasitas RAM ponsel dalam GB.
   - `performance`: Skor kinerja ponsel.
   - `main camera`: Resolusi kamera utama dalam MP.
   - `selfie camera`: Resolusi kamera depan dalam MP.
-  - `battery size`: Kapasitas baterai dalam mAh.
-  - `screen size`: Ukuran layar dalam inci.
+  - `battery size`: Kapasitas baterai ponsel dalam mAh.
+  - `screen size`: Ukuran layar ponsel dalam inci.
   - `weight`: Berat ponsel dalam gram.
   - `price`: Harga ponsel dalam USD.
   - `release date`: Tanggal rilis ponsel.
 
 - rating:
-  - `user_id`: ID unik untuk setiap pengguna.
-  - `cellphone_id`: ID unik untuk setiap ponsel (mengacu pada cellphones_data).
-  - `rating`: Rating yang diberikan pengguna untuk ponsel tertentu (skala 1-10).
+  - `user_id`: Unik ID untuk setiap pengguna.
+  - `cellphone_id`: Unik ID untuk setiap ponsel (merujuk pada cellphones_data).
+  - `rating`: Nilai rating yang diberikan pengguna untuk ponsel tertentu (skala 1-10).
 
 - users:
-  - `user_id`: ID unik untuk setiap pengguna.
+  - `user_id`: Unik ID untuk setiap pengguna.
   - `age`: Usia pengguna.
   - `gender`: Jenis kelamin pengguna.
   - `occupation`: Pekerjaan pengguna.
