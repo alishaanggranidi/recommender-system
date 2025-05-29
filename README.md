@@ -125,27 +125,27 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 
 ### Exploratory Data Analysis (EDA) 🔍
 - Distribusi Brand Ponsel
-  ![Distribusi Brand](.images/outputcode.png)
+  ![Distribusi Brand](./images/outputcode.png)
   - Gambar ini menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
   - Samsung memiliki jumlah ponsel terbanyak dengan 8 unit.
   - Apple berada di posisi kedua dengan 6 unit.
   - Brand Asus, Oppo, Vivo, dan Sony memiliki jumlah yang lebih sedikit.  
 
 - Distribusi Sistem Operasi Ponsel
-  ![Distribusi Sistem Operasi Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image2.png)
+  ![Distribusi Sistem Operasi Ponsel](./images/outputcode2.png)
   - Gambar ini menunjukkan distribusi sistem operasi pada ponsel dalam dataset.
   - Android merupakan sistem operasi yang paling umum dengan lebih dari 25 unit.
   - iOS memiliki sekitar 6 unit.
 
 - Distribusi Tahun Rilis Ponsel
-  ![Distribusi Tahun Rilis Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image3.png)
+  ![Distribusi Tahun Rilis Ponsel](./images/outputcode3.png)
   - Gambar ini menunjukkan distribusi ponsel berdasarkan tahun rilis.
   - Tahun 2021 dan 2022 memiliki jumlah ponsel yang hampir sama, masing-masing lebih dari 15 unit.
   - Tahun 2018 memiliki jumlah ponsel yang sangat sedikit.
   - Ponsel yang dirilis pada tahun 2018 memiliki representasi yang sangat rendah, menunjukkan bahwa dataset lebih fokus pada model-model terbaru.
 
 - Distribusi Rating Ponsel
-  ![Distribusi Tahun Rilis Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image4.png)
+  ![Distribusi Tahun Rilis Ponsel](./images/outputcode4.png)
   - Gambar ini menunjukkan distribusi rating yang diberikan pengguna untuk ponsel dalam dataset.
   - Rating 8 adalah yang paling umum, diikuti oleh rating 7 dan 10.
   - Rating yang lebih rendah, seperti 2, 3, dan 4, memiliki jumlah yang lebih sedikit.
@@ -360,7 +360,7 @@ Di mana:
 | RMSE       | 0.2063 | 0.6416|
 
 
-![Grafik train vs test](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image6.png)
+![Grafik train vs test](./images/outputcode5.png)
 
 RMSE yang dihitung memberikan indikasi bahwa model prediksi rating memiliki tingkat kesalahan yang dapat diterima, sehingga memadai untuk tujuan rekomendasi.
 
