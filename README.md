@@ -159,10 +159,10 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 - Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan, memungkinkan evaluasi yang lebih adil terhadap kinerja model.
 
 ## Modeling
+
 Pada tahap modeling, akan dibahas dua pendekatan utama yang digunakan dalam pembangunan sistem rekomendasi, yaitu: Content-Based Filtering dan Collaborative Filtering. Penjelasan berikut mencakup parameter yang digunakan, kelebihan dan kekurangan dari masing-masing pendekatan, serta contoh potongan kode yang relevan.
 
 ### Model Sistem Rekomendasi Content Based Filtering
-
 Content-Based Filtering memanfaatkan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi. Berikut adalah parameter yang digunakan dalam pendekatan ini:
 
 Tahapan proses:
@@ -201,7 +201,6 @@ Misalkan pengguna memiliki ponsel "Galaxy S22 Ultra" dan ingin mendapatkan rekom
   4. Mengembalikan daftar ponsel dengan tingkat kemiripan tertinggi terhadap "Galaxy S22 Ultra".
 
 ### Top-N Recommendation Content Based Filtering
-
 Menampilkan hasil rekomendasi
   - model_recommendations('Galaxy S22 Ultra')
 
@@ -222,7 +221,6 @@ Menampilkan hasil rekomendasi
   |3|iPhone 13 Pro|Apple|iOS|
 
 ### Model Sistem Rekomendasi Collaborative Filtering 
-
 Collaborative Filtering menggunakan interaksi antara pengguna dan item (misalnya rating) untuk menghasilkan rekomendasi. Pada pendekatan ini, kita menggunakan beberapa parameter berikut:
 
 Tahapan proses:
@@ -282,10 +280,10 @@ Apple : iPhone 13
 *****************************************************************
 
 ## Evaluation
+
 Pada bagian ini, model rekomendasi yang telah dibangun akan dievaluasi menggunakan metrik evaluasi yang sesuai. Untuk model prediksi rating, kami akan menggunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Selain itu, evaluasi juga akan dilakukan untuk menentukan apakah proyek ini berhasil menjawab pernyataan masalah dan memberikan solusi yang diharapkan.
 
 ### Metrik Evaluasi 📈
-
 Root Mean Squared Error (RMSE) dalah akar kuadrat dari rata-rata kuadrat selisih antara prediksi dan nilai sebenarnya. Metrik ini menggambarkan sejauh mana prediksi model menyimpang dari nilai yang sebenarnya dalam satuan yang sama dengan variabel yang diprediksi. RMSE sangat berguna karena memberikan penalti yang lebih besar pada kesalahan yang lebih besar.
 
 $$
@@ -307,13 +305,14 @@ Di mana:
 Berdasarkan gambar tersebut RMSE yang dihitung menunjukkan bahwa model prediksi rating memiliki tingkat kesalahan yang dapat diterima, sehingga cukup memadai untuk tujuan rekomendasi.
 
 ### Evaluasi Terhadap Business Understanding
-Model yang dikembangkan berhasil menjawab problem statement dengan memberikan rekomendasi ponsel berdasarkan model yang ada dan memprediksi rating ponsel yang belum diulas oleh pengguna. Pendekatan content-based filtering memanfaatkan data deskriptif seperti model, brand, dan operating system untuk memberikan rekomendasi ponsel yang relevan, sementara collaborative filtering menggunakan interaksi pengguna-item (rating) untuk menemukan pola preferensi pengguna.
+- **Menjawab Problem Statement**: Model yang dikembangkan berhasil menjawab problem statement dengan memberikan rekomendasi ponsel berdasarkan model yang ada dan memprediksi rating ponsel yang belum diulas oleh pengguna. Pendekatan content-based filtering memanfaatkan data deskriptif seperti model, brand, dan operating system untuk memberikan rekomendasi ponsel yang relevan, sementara collaborative filtering menggunakan interaksi pengguna-item (rating) untuk menemukan pola preferensi pengguna.
 
-Model content-based filtering menggunakan cosine similarity dan collaborative filtering dengan RecommenderNet berhasil mencapai tujuan untuk memberikan rekomendasi yang relevan. Content-based filtering membuat profil item berdasarkan kesamaan fitur, meningkatkan akurasi rekomendasi, sedangkan collaborative filtering memanfaatkan data rating pengguna untuk memahami preferensi dan memberikan rekomendasi yang sesuai.
+- **Mencapai tujuan** : Model content-based filtering menggunakan cosine similarity dan collaborative filtering dengan RecommenderNet berhasil mencapai tujuan untuk memberikan rekomendasi yang relevan. Content-based filtering membuat profil item berdasarkan kesamaan fitur, meningkatkan akurasi rekomendasi, sedangkan collaborative filtering memanfaatkan data rating pengguna untuk memahami preferensi dan memberikan rekomendasi yang sesuai.
 
-Dengan menggunakan kedua algoritma ini, solusi yang direncanakan memberikan dampak positif dalam meningkatkan relevansi dan akurasi rekomendasi. Content-based filtering memastikan rekomendasi yang relevan dengan mempertimbangkan kesamaan fitur, sementara collaborative filtering memungkinkan sistem memahami preferensi pengguna dari interaksi sebelumnya, menghasilkan rekomendasi yang lebih personal. Hasilnya menunjukkan bahwa pendekatan ini berhasil mencapai tujuan proyek dan memberikan rekomendasi yang sesuai dengan kebutuhan pengguna.
+- **Pengaruh**: Dengan menggunakan kedua algoritma ini, solusi yang direncanakan memberikan dampak positif dalam meningkatkan relevansi dan akurasi rekomendasi. Content-based filtering memastikan rekomendasi yang relevan dengan mempertimbangkan kesamaan fitur, sementara collaborative filtering memungkinkan sistem memahami preferensi pengguna dari interaksi sebelumnya, menghasilkan rekomendasi yang lebih personal. Hasilnya menunjukkan bahwa pendekatan ini berhasil mencapai tujuan proyek dan memberikan rekomendasi yang sesuai dengan kebutuhan pengguna.
 
 ## Kesimpulan 👀
+
 Kombinasi kedua pendekatan ini membangun sistem rekomendasi yang lebih kuat dan fleksibel. Content-Based Filtering cocok untuk memberikan rekomendasi berdasarkan fitur item, sementara Collaborative Filtering efektif dalam menemukan pola preferensi pengguna dari data interaksi. Memahami kelebihan dan kekurangan masing-masing pendekatan membantu memilih metode yang tepat sesuai dengan kebutuhan dan konteks sistem rekomendasi yang sedang dibangun.
 
 ## Referensi
