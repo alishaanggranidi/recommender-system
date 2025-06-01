@@ -265,27 +265,27 @@ Misalnya, pengguna dengan ID 10 memiliki beberapa ponsel dengan rating tinggi da
 
 ### Top-N Recommendation Collaborative Filtering 
 ```
-Showing recommendations for users: 10
+Showing recommendations for users: 252
 ===========================
 cellphone with high ratings from user
 --------------------------------
-Vivo : X80 Pro
-Apple : iPhone 13 Pro
-Apple : iPhone 13 Pro Max
+OnePlus : Nord 2T
+Google : Pixel 6  
 Xiaomi : Poco F4
-Samsung : Galaxy Z Fold 3
+Google : Pixel 6 Pro 
+Asus : Zenfone 8
 --------------------------------
 Top 10 cellphone recommendation
 --------------------------------
+Apple : iPhone XR
 Samsung : Galaxy S22
-Samsung : Galaxy A53
+Vivo : X80 Pro
 Oppo : Find X5 Pro
+Apple : iPhone 13 Pro
 Apple : iPhone 13 Mini
-Xiaomi : 11T Pro
 OnePlus : 10 Pro
 Apple : iPhone SE (2022)
-Google : Pixel 6 Pro 
-Xiaomi : 12 Pro
+Samsung : Galaxy S22 Ultra
 Apple : iPhone 13
 ```
 *****************************************************************
