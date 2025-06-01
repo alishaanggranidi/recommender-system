@@ -32,9 +32,9 @@ Proyek ini memiliki peranan penting karena:
 ## 📂 Data Understanding 
 Dataset yang digunakan mencakup informasi tentang berbagai model ponsel, seperti merek, model, sistem operasi, serta beberapa fitur lainnya. Dataset ini berasal dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
     - Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
-    - Data ponsel terdiri dari 33 baris dan 32 kolom tanpa adanya nilai yang hilang. 
+    - Data cellphones terdiri dari 33 baris dan 14 kolom tanpa adanya nilai yang hilang. 
     
-Dataset ini memuat spesifikasi rinci dari setiap ponsel, berikut adalah informasi:
+Dataset ini memuat spesifikasi rinci dari setiap cellphones berikut adalah informasi:
 
 |   Column           |  Dtype   |
 |--------------------|----------|
@@ -78,7 +78,7 @@ Berikut adalah contoh data dari cellphones rating:
 
 *****************************************************************
 
-Cellphones users terdiri dari 99 baris dan 4 kolom tanpa adanya missing value. Dataset ini berisi informasi tentang pengguna, berikut adalah informasi data dari cellphones users:
+Cellphones users terdiri dari 99 baris dan 4 kolom dengan 1 missing value pada occupation. Dataset ini berisi informasi tentang pengguna, berikut adalah informasi data dari cellphones users:
 
 |   Column           |  Dtype   |
 |--------------------|----------|
@@ -140,15 +140,24 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
   ![Distribusi Tahun Rilis ](./images/outputcode4.png)
   - Gambar tersebut menunjukkan distribusi rating yang diberikan pengguna untuk ponsel dalam dataset, di mana rating `8 ` merupakan yang paling umum, diikuti oleh rating `7` dan `10`. Rating yang lebih rendah, seperti `2`, `3`, dan `4`, tercatat memiliki jumlah yang lebih sedikit. Secara keseluruhan, sebagian besar ponsel dalam dataset mendapatkan rating yang cukup tinggi, yaitu antara `7` hingga`10`.
 
+
+
+### Teknik Data Prepocessing
+- Menggabungkan seluruh dataset menjadi satu.
+- Menangani Missing Values: Menghapus atau mengisi data yang hilang dalam dataset.
+
 ## Data Preparation ⚙️
 
 ### Teknik Data Preparation
-- Menggabungkan seluruh dataset menjadi satu.
-- Menangani Missing Values: Menghapus atau mengisi data yang hilang dalam dataset.
-- Removing Outliers: Mengeliminasi data dengan nilai outliers pada kolom tertentu.
-- Mengubah format penulisan. 
-- Mengganti nilai-nilai tertentu.
-- Pembagian dataset untuk train-test (80:20).
+- Menghapus Duplikasi Data: Menghilangkan data yang duplikat pada kolom cellphone_id untuk memastikan tidak ada data yang redundant dan memastikan kualitas analisis.Removing data duplikat 
+- Menghapus Outliers: Mengeliminasi data dengan nilai outlier, seperti rating dengan nilai 18 dan kategori gender -Select Gender, untuk meningkatkan akurasi model.
+- Mengubah Format Penulisan: Menstandardisasi penulisan kolom occupation menjadi huruf kecil dan memperbaiki penulisan yang salah, seperti healthare menjadi healthcare dan it menjadi information technology.
+- Mengganti Nilai Tertentu: Memperbaiki inkonsistensi penulisan pada kolom occupation untuk memastikan konsistensi dan keterbacaan data.
+- Pembagian Dataset untuk Train-Test (80:20): Membagi dataset menjadi 80% untuk data pelatihan dan 20% untuk data pengujian guna memastikan evaluasi model yang lebih adil.
+- Encoding Fitur user_id dan cellphone_id untuk Model Collaborative Filtering: Mengonversi user_id dan cellphone_id menjadi nilai numerik menggunakan teknik encoding, yang memudahkan pemrosesan data dalam model Collaborative Filtering.
+- Normalisasi Fitur Rating untuk Model Collaborative Filtering: Melakukan normalisasi pada kolom rating, dengan mengubah nilai rating menjadi skala 0 hingga 1 untuk memfasilitasi perbandingan antar pengguna dan produk.
+- Normalisasi Fitur Rating untuk Model Collaborative Filtering: Melakukan normalisasi pada kolom rating, dengan mengubah nilai rating menjadi skala 0 hingga 1 untuk memfasilitasi perbandingan antar pengguna dan produk.
+- TF-IDF (Term Frequency-Inverse Document Frequency): Menggunakan teknik TF-IDF pada kolom brand untuk feature extraction pada model Content-Based Filtering. TF-IDF digunakan untuk mengonversi teks menjadi representasi numerik yang dapat dihitung untuk perhitungan kesamaan antar produk.
 
 ### Proses Data Preparation
 - Menggabungkan dataset `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe untuk memudahkan analisis dan menghindari fragmentasi data.
@@ -156,6 +165,10 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 - Menghapus outlier pada kolom `rating` yang memiliki nilai 18 dan pada kolom `gender` yang memiliki nilai -Select Gender- untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
 - Mengubah semua nilai pada kolom `occupation` menjadi huruf untuk memastikan konsistensi format penulisan dan mencegah kesalahan interpretasi, di mana nilai yang serupa dapat dianggap berbeda hanya karena perbedaan kapitalisasi.
 - Memperbaiki penulisan yang salah pada kolom `occupation`, seperti mengganti nilai 'Healthare' menjadi 'healthcare' dan 'it' menjadi 'information technology', untuk memperbaiki inkonsistensi penulisan yang bisa memengaruhi hasil analisis dan meningkatkan keterbacaan dataset.
+- Penghapusan Data Duplikat pada `cellphone_id`: Menghapus duplikasi berdasarkan `cellphone_id` untuk memastikan dataset tidak mengandung entri berulang yang dapat memengaruhi model.
+- Encoding untuk Collaborative Filtering: Melakukan encoding pada fitur `user_id` dan `cellphone_id` untuk menyusun input yang siap digunakan dalam model Collaborative Filtering.
+- Normalisasi Rating untuk Collaborative Filtering: Melakukan normalisasi rating menjadi skala 0-1 untuk meningkatkan akurasi dalam Collaborative Filtering.
+- TF-IDF untuk Content-Based Filtering: Menggunakan TF-IDF untuk mengekstrak fitur dari kolom `brand` guna menghitung kemiripan antara model ponsel.
 - Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan, memungkinkan evaluasi yang lebih adil terhadap kinerja model.
 
 ## Modeling
