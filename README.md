@@ -250,7 +250,7 @@ Menampilkan hasil rekomendasi
   |3|iPhone 13 Pro|Apple|iOS|
 
 ### Model Sistem Rekomendasi Collaborative Filtering 
-CCollaborative Filtering menggunakan interaksi antara pengguna dan item (rating) untuk menghasilkan rekomendasi berdasarkan pola preferensi pengguna.
+Collaborative Filtering menggunakan interaksi antara pengguna dan item (rating) untuk menghasilkan rekomendasi berdasarkan pola preferensi pengguna.
 
 **Bagaimana Algoritma Bekerja:**
 Collaborative Filtering menggunakan interaksi antara pengguna dan item (seperti rating) untuk menghasilkan rekomendasi. Algoritma ini berfungsi dengan memprediksi rating untuk item yang belum diulas oleh pengguna, berdasarkan rating yang diberikan oleh pengguna lain untuk item serupa. Model ini mempelajari pola preferensi pengguna dari data rating yang ada, dan menggunakan pola tersebut untuk memberikan rekomendasi item yang kemungkinan besar akan disukai oleh pengguna.
