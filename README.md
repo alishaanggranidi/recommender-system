@@ -31,10 +31,10 @@ Proyek ini memiliki peranan penting karena:
 
 ## 📂 Data Understanding 
 Dataset yang digunakan mencakup informasi tentang berbagai model ponsel, seperti merek, model, sistem operasi, serta beberapa fitur lainnya. Dataset ini berasal dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
-    - Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
-    - Data cellphones terdiri dari 33 baris dan 14 kolom tanpa adanya nilai yang hilang. 
+    - Dataset terbagi menjadi 3 yaitu `cellphones data`, `cellphones rating`, dan `cellphones users`.
     
-Dataset ini memuat spesifikasi rinci dari setiap cellphones berikut adalah informasi:
+    
+Data `cellphones data` terdiri dari 33 baris dan 14 kolom tanpa adanya nilai yang hilang. Dataset ini memuat spesifikasi rinci dari setiap cellphones berikut adalah informasi:
 
 |   Column           |  Dtype   |
 |--------------------|----------|
@@ -78,7 +78,7 @@ Berikut adalah contoh data dari cellphones rating:
 
 *****************************************************************
 
-Cellphones users terdiri dari 99 baris dan 4 kolom dengan 1 missing value pada occupation. Dataset ini berisi informasi tentang pengguna, berikut adalah informasi data dari cellphones users:
+Cellphones users terdiri dari 99 baris dan 4 kolom dengan 1 missing value pada kolom occupation. Dataset ini berisi informasi tentang pengguna, berikut adalah informasi data dari cellphones users:
 
 |   Column           |  Dtype   |
 |--------------------|----------|
@@ -149,37 +149,18 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 ## Data Preparation ⚙️
 
 ### Teknik Data Preparation
-- Menghapus Duplikasi Data: Menghilangkan data yang duplikat pada kolom cellphone_id untuk memastikan tidak ada data yang redundant dan memastikan kualitas analisis.Removing data duplikat 
-- Menghapus Outliers: Mengeliminasi data dengan nilai outlier, seperti rating dengan nilai 18 dan kategori gender -Select Gender, untuk meningkatkan akurasi model.
-- Mengubah Format Penulisan: Menstandardisasi penulisan kolom occupation menjadi huruf kecil dan memperbaiki penulisan yang salah, seperti healthare menjadi healthcare dan it menjadi information technology.
-- Mengganti Nilai Tertentu: Memperbaiki inkonsistensi penulisan pada kolom occupation untuk memastikan konsistensi dan keterbacaan data.
-- Pembagian Dataset untuk Train-Test (80:20): Membagi dataset menjadi 80% untuk data pelatihan dan 20% untuk data pengujian guna memastikan evaluasi model yang lebih adil.
-- Encoding Fitur user_id dan cellphone_id untuk Model Collaborative Filtering: Mengonversi user_id dan cellphone_id menjadi nilai numerik menggunakan teknik encoding, yang memudahkan pemrosesan data dalam model Collaborative Filtering.
-- Normalisasi Fitur Rating untuk Model Collaborative Filtering: Melakukan normalisasi pada kolom rating, dengan mengubah nilai rating menjadi skala 0 hingga 1 untuk memfasilitasi perbandingan antar pengguna dan produk.
-- Normalisasi Fitur Rating untuk Model Collaborative Filtering: Melakukan normalisasi pada kolom rating, dengan mengubah nilai rating menjadi skala 0 hingga 1 untuk memfasilitasi perbandingan antar pengguna dan produk.
-- TF-IDF (Term Frequency-Inverse Document Frequency): Menggunakan teknik TF-IDF pada kolom brand untuk feature extraction pada model Content-Based Filtering. TF-IDF digunakan untuk mengonversi teks menjadi representasi numerik yang dapat dihitung untuk perhitungan kesamaan antar produk.
 
-### Proses Data Preparation
-- Menggabungkan dataset `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe untuk memudahkan analisis dan menghindari fragmentasi data.
-- Menghapus nilai Null pada kolom `occupation`agar tidak ada data yang hilang yang dapat memengaruhi hasil analisis dan model.
-- Menghapus outlier pada kolom `rating` yang memiliki nilai 18 dan pada kolom `gender` yang memiliki nilai -Select Gender- untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
-- Mengubah semua nilai pada kolom `occupation` menjadi huruf untuk memastikan konsistensi format penulisan dan mencegah kesalahan interpretasi, di mana nilai yang serupa dapat dianggap berbeda hanya karena perbedaan kapitalisasi.
-- Memperbaiki penulisan yang salah pada kolom `occupation`, seperti mengganti nilai 'Healthare' menjadi 'healthcare' dan 'it' menjadi 'information technology', untuk memperbaiki inkonsistensi penulisan yang bisa memengaruhi hasil analisis dan meningkatkan keterbacaan dataset.
-- Penghapusan Data Duplikat pada `cellphone_id`: Menghapus duplikasi berdasarkan `cellphone_id` untuk memastikan dataset tidak mengandung entri berulang yang dapat memengaruhi model.
-- Encoding untuk Collaborative Filtering: Melakukan encoding pada fitur `user_id` dan `cellphone_id` untuk menyusun input yang siap digunakan dalam model Collaborative Filtering.
-- Normalisasi Rating untuk Collaborative Filtering: Melakukan normalisasi rating menjadi skala 0-1 untuk meningkatkan akurasi dalam Collaborative Filtering.
-- TF-IDF untuk Content-Based Filtering: Menggunakan TF-IDF untuk mengekstrak fitur dari kolom `brand` guna menghitung kemiripan antara model ponsel.
-- Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan, memungkinkan evaluasi yang lebih adil terhadap kinerja model.
+#### 1. Tahap Persiapan Data Umum
+- **Menggabungkan Dataset**: Menggabungkan dataset `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe untuk memudahkan analisis dan menghindari fragmentasi data.
+- **Menangani Missing Values**: Menghapus nilai Null pada kolom `occupation` agar tidak ada data yang hilang yang dapat memengaruhi hasil analisis dan model.
+- **Menghapus Outliers**: Mengeliminasi outlier pada kolom `rating` yang memiliki nilai 18 dan pada kolom `gender` yang memiliki nilai -Select Gender- untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
+- **Standardisasi Data**: Mengubah semua nilai pada kolom `occupation` menjadi huruf kecil untuk memastikan konsistensi format penulisan dan mencegah kesalahan interpretasi.
+- **Perbaikan Inkonsistensi**: Memperbaiki penulisan yang salah pada kolom `occupation`, seperti mengganti nilai 'Healthare' menjadi 'healthcare' dan 'it' menjadi 'information technology'.
+- **Penghapusan Duplikasi**: Menghapus duplikasi berdasarkan `cellphone_id` untuk memastikan dataset tidak mengandung entri berulang yang dapat memengaruhi model.
 
-## Modeling
-
-Pada tahap modeling, akan dibahas dua pendekatan utama yang digunakan dalam pembangunan sistem rekomendasi, yaitu: Content-Based Filtering dan Collaborative Filtering. Penjelasan berikut mencakup parameter yang digunakan, kelebihan dan kekurangan dari masing-masing pendekatan, serta contoh potongan kode yang relevan.
-
-### Model Sistem Rekomendasi Content Based Filtering
-Content-Based Filtering memanfaatkan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi. Berikut adalah parameter yang digunakan dalam pendekatan ini:
-
-Tahapan proses:
-1.  Karena TF-IDF hanya cocok digunakan untuk data teks, maka hanya kolom dengan tipe data objek yang dipilih.
+#### 2. Persiapan Data untuk Content-Based Filtering
+- **Feature Selection**: Karena TF-IDF hanya cocok digunakan untuk data teks, maka hanya kolom dengan tipe data objek yang dipilih (`cellphone_id`, `brand`, `model`, `operating_system`).
+- **TF-IDF Vectorization**: Menggunakan TF-IDF (Term Frequency-Inverse Document Frequency) untuk mengekstrak fitur dari kolom `brand` guna menghitung kemiripan antara model ponsel.
   ```python
   #dictionary untuk menentukan pasangan key-value
   data_dict = pd.DataFrame({
@@ -189,29 +170,64 @@ Tahapan proses:
       'operating_system': operating_system,
   })
   ```
-
-2. Developing a Recommendation System TfidfVectorizer() dengan melakukan perhitungan idf pada data `brand`
-
-3. Melakukan fit lalu ditransformasikan ke bentuk matrix
+- **Transformasi ke Matrix**: Melakukan fit lalu ditransformasikan ke bentuk matrix
   ```python
   #fit dan transform ke matriks
   tfidf_matrix = tf.fit_transform(data['brand']) 
   ```
   Hasilnya berupa matriks berukuran (33,10), di mana 33 merujuk pada jumlah data dan 10 adalah jumlah brand.
 
-4. Menghitung similarity degree antar model menggunakan metode cosine similarity.
+#### 3. Persiapan Data untuk Collaborative Filtering
+- **Pengacakan Dataset**: Melakukan pengacakan dataset (`df.sample(frac=1, random_state=42)`) untuk memastikan distribusi data yang acak sebelum pembagian.
+- **Pembagian Dataset**: Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan.
+- **Encoding Fitur**: Melakukan encoding pada fitur `user_id` dan `cellphone_id` untuk menyusun input yang siap digunakan dalam model Collaborative Filtering.
+- **Normalisasi Rating**: Melakukan normalisasi rating menjadi skala 0-1 untuk meningkatkan akurasi dalam Collaborative Filtering.
 
-5. Membuat fungsi model_recommendations .
+### Proses Data Preparation
+Berikut adalah urutan proses data preparation yang dilakukan:
 
-Bagaimana Algoritma Bekerja:
-- Content-Based Filtering menggunakan deskripsi item itu sendiri untuk memberikan rekomendasi. Algoritma ini bekerja dengan cara mengubah fitur deskriptif dari item (seperti model ponsel) menjadi representasi numerik menggunakan TF-IDF Vectorizer. Selanjutnya, dihitung cosine similarity untuk menentukan tingkat kemiripan antara item-item berdasarkan vektor fitur mereka. Berdasarkan hasil perhitungan kemiripan ini, sistem dapat memberikan rekomendasi item yang paling mirip dengan item yang telah disukai oleh pengguna.
+1. **Menggabungkan dataset** `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe
+2. **Menghapus nilai Null** pada kolom `occupation`
+3. **Menghapus outlier** pada kolom `rating` dan `gender`
+4. **Mengubah format penulisan** pada kolom `occupation` menjadi huruf kecil
+5. **Memperbaiki inkonsistensi penulisan** pada kolom `occupation`
+6. **Menghapus duplikasi data** berdasarkan `cellphone_id`
+7. **Persiapan untuk Content-Based Filtering**:
+   - Seleksi fitur kategorikal
+   - Implementasi TF-IDF Vectorization pada kolom `brand`
+   - Transformasi ke bentuk matrix
+8. **Persiapan untuk Collaborative Filtering**:
+   - Pengacakan dataset dengan random state
+   - Pembagian dataset menjadi train dan test (80:20)
+   - Encoding fitur `user_id` dan `cellphone_id`
+   - Normalisasi rating ke skala 0-1
 
-Interaksi dengan Sampel Input:
+## Modeling
+
+Pada tahap modeling, akan dibahas dua pendekatan utama yang digunakan dalam pembangunan sistem rekomendasi, yaitu: Content-Based Filtering dan Collaborative Filtering.
+
+### Model Sistem Rekomendasi Content Based Filtering
+
+Content-Based Filtering memanfaatkan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi berdasarkan kesamaan karakteristik produk.
+
+**Bagaimana Algoritma Bekerja:**
+Content-Based Filtering menggunakan deskripsi item itu sendiri untuk memberikan rekomendasi. Algoritma ini bekerja dengan cara menganalisis fitur-fitur deskriptif dari item (seperti brand ponsel) yang telah diproses menjadi representasi numerik. Selanjutnya, dihitung cosine similarity untuk menentukan tingkat kemiripan antara item-item berdasarkan vektor fitur mereka. Berdasarkan hasil perhitungan kemiripan ini, sistem dapat memberikan rekomendasi item yang paling mirip dengan item yang telah disukai oleh pengguna.
+
+**Parameter yang Digunakan:**
+- **Cosine Similarity**: Metrik untuk mengukur kesamaan antar item
+- **Top-N Recommendation**: Menampilkan 4 rekomendasi teratas
+- **Fitur Utama**: Brand sebagai basis perhitungan kesamaan
+
+**Tahapan Pemodelan:**
+1. Menghitung similarity degree antar model menggunakan metode cosine similarity
+2. Membuat fungsi `model_recommendations` untuk menghasilkan rekomendasi
+3. Implementasi sistem rekomendasi berdasarkan input model ponsel
+
+**Interaksi dengan Sampel Input:**
 Misalkan pengguna memiliki ponsel "Galaxy S22 Ultra" dan ingin mendapatkan rekomendasi ponsel yang serupa. Algoritma akan:
-  1. Mengambil deskripsi lengkap dari "Galaxy S22 Ultra".
-  2. Mengubah deskripsi ini menjadi vektor numerik menggunakan TF-IDF Vectorizer.
-  3. Menghitung cosine similarity antara vektor "Galaxy S22 Ultra" dan semua vektor ponsel lain dalam dataset.
-  4. Mengembalikan daftar ponsel dengan tingkat kemiripan tertinggi terhadap "Galaxy S22 Ultra".
+1. Mengambil representasi vektor dari "Galaxy S22 Ultra"
+2. Menghitung cosine similarity antara vektor "Galaxy S22 Ultra" dan semua vektor ponsel lain dalam dataset
+3. Mengembalikan daftar ponsel dengan tingkat kemiripan tertinggi terhadap "Galaxy S22 Ultra"
 
 ### Top-N Recommendation Content Based Filtering
 Menampilkan hasil rekomendasi
@@ -234,34 +250,30 @@ Menampilkan hasil rekomendasi
   |3|iPhone 13 Pro|Apple|iOS|
 
 ### Model Sistem Rekomendasi Collaborative Filtering 
-Collaborative Filtering menggunakan interaksi antara pengguna dan item (misalnya rating) untuk menghasilkan rekomendasi. Pada pendekatan ini, kita menggunakan beberapa parameter berikut:
+CCollaborative Filtering menggunakan interaksi antara pengguna dan item (rating) untuk menghasilkan rekomendasi berdasarkan pola preferensi pengguna.
 
-Tahapan proses:
-1. Menggunakan dataframe ratings dari file `cellphones ratings.csv`
-2. Membuat class `RecommenderNet` mewarisi kelas `Model` Keras:
-```python
-class RecommenderNet(tf.keras.Model):
-  ...
-  ...
-```
-3. Inisialisasi model dengan nilai embedding sebesar 50.
-4. Compile model menggunakan:
-  - loss = `BinaryCrossentropy`
-  - optimizer = `Adam`
-  - learning_rate = `0.001`
-  - metrics = `RootMeanSquaredError`
-5. Melakukan proses training model dengan parameter 
+**Bagaimana Algoritma Bekerja:**
+Collaborative Filtering menggunakan interaksi antara pengguna dan item (seperti rating) untuk menghasilkan rekomendasi. Algoritma ini berfungsi dengan memprediksi rating untuk item yang belum diulas oleh pengguna, berdasarkan rating yang diberikan oleh pengguna lain untuk item serupa. Model ini mempelajari pola preferensi pengguna dari data rating yang ada, dan menggunakan pola tersebut untuk memberikan rekomendasi item yang kemungkinan besar akan disukai oleh pengguna.
+
+**Arsitektur Model:**
+1. **RecommenderNet Class**: Menggunakan kelas `RecommenderNet` yang mewarisi kelas `Model` Keras
+2. **Embedding Layer**: Inisialisasi model dengan nilai embedding sebesar 50 untuk user dan item
+3. **Neural Network**: Implementasi neural network untuk prediksi rating
+
+**Parameter Model:**
+- **Embedding Dimension**: 50
+- **Loss Function**: `BinaryCrossentropy`
+- **Optimizer**: `Adam` dengan learning rate 0.001
+- **Metrics**: `RootMeanSquaredError`
+- **Training Parameters**: 
   - batch_size = 8
   - epochs = 100
 
-Bagaimana Algoritma Bekerja:
-- Collaborative Filtering menggunakan interaksi antara pengguna dan item (seperti rating) untuk menghasilkan rekomendasi. Algoritma ini berfungsi dengan memprediksi rating untuk item yang belum diulas oleh pengguna, berdasarkan rating yang diberikan oleh pengguna lain untuk item serupa. Model ini mempelajari pola preferensi pengguna dari data rating yang ada, dan menggunakan pola tersebut untuk memberikan rekomendasi item yang kemungkinan besar akan disukai oleh pengguna.
-
-Interaksi dengan Sampel Input:
+**Interaksi dengan Sampel Input:**
 Misalnya, pengguna dengan ID 10 memiliki beberapa ponsel dengan rating tinggi dan ingin menerima rekomendasi. Algoritma akan:
-1. Mengambil data rating dari pengguna lain yang memiliki preferensi serupa.
-2. Menggunakan model yang sudah dilatih untuk memprediksi rating untuk ponsel yang belum diulas oleh pengguna 10.
-3. Menghasilkan daftar ponsel berdasarkan prediksi rating tertinggi.
+1. Mengambil data rating dari pengguna lain yang memiliki preferensi serupa
+2. Menggunakan model yang sudah dilatih untuk memprediksi rating untuk ponsel yang belum diulas oleh pengguna 10
+3. Menghasilkan daftar ponsel berdasarkan prediksi rating tertinggi
 
 ### Top-N Recommendation Collaborative Filtering 
 ```
