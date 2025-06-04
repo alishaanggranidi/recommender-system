@@ -72,9 +72,9 @@ Cellphones rating terdiri dari 990 baris dan 3 kolom tanpa adanya missing value.
 
 Berikut adalah contoh data dari cellphones rating:
 
-|index|user\_id|cellphone\_id|rating|
+|index|user_id|cellphone_id|rating|
 |---|---|---|---|
-|0|2|10|9|
+|0|0|30|1|
 |1|0|5|3|
 
 *****************************************************************
@@ -93,7 +93,7 @@ Berikut adalah contoh data dari cellphones users:
 |index|user\_id|age|gender|occupation|
 |---|---|---|---|---|
 |0|0|38|Female|Data analyst|
-|1|2|55|Female|IT|
+|1|1|40|Female|team worker in it|
 
 #### Variabel dalam dataset
 Berikut adalah variabel-variabel yang terdapat dalam dataset:
@@ -154,7 +154,7 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 #### 1. Tahap Persiapan Data Umum
 - **Menggabungkan Dataset**: Menggabungkan dataset `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe untuk memudahkan analisis dan menghindari fragmentasi data.
 - **Menangani Missing Values**: Menghapus nilai Null pada kolom `occupation` agar tidak ada data yang hilang yang dapat memengaruhi hasil analisis dan model.
-- **Menghapus Outliers**: Mengeliminasi outlier pada kolom `rating` yang memiliki nilai 18 dan pada kolom `gender` yang memiliki nilai -Select Gender- untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
+- **Menghapus Outliers**: Mengeliminasi outlier pada kolom `gender` yang memiliki nilai -Select Gender- untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
 - **Standardisasi Data**: Mengubah semua nilai pada kolom `occupation` menjadi huruf kecil untuk memastikan konsistensi format penulisan dan mencegah kesalahan interpretasi.
 - **Perbaikan Inkonsistensi**: Memperbaiki penulisan yang salah pada kolom `occupation`, seperti mengganti nilai 'Healthare' menjadi 'healthcare' dan 'it' menjadi 'information technology'.
 - **Penghapusan Duplikasi**: Menghapus duplikasi berdasarkan `cellphone_id` untuk memastikan dataset tidak mengandung entri berulang yang dapat memengaruhi model.
@@ -182,6 +182,7 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 - **Pengacakan Dataset**: Melakukan pengacakan dataset (`df.sample(frac=1, random_state=42)`) untuk memastikan distribusi data yang acak sebelum pembagian.
 - **Pembagian Dataset**: Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan.
 - **Encoding Fitur**: Melakukan encoding pada fitur `user_id` dan `cellphone_id` untuk menyusun input yang siap digunakan dalam model Collaborative Filtering.
+- **Menghapus Outliers**: Mengeliminasi outlier pada kolom `rating` yang memiliki nilai 18  untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
 - **Normalisasi Rating**: Melakukan normalisasi rating menjadi skala 0-1 untuk meningkatkan akurasi dalam Collaborative Filtering.
 
 ### Proses Data Preparation
@@ -237,7 +238,7 @@ Menampilkan hasil rekomendasi
   |index|model|brand|operating\_system|
   |---|---|---|---|
   |0|Galaxy Z Flip 3 |Samsung|Android|
-  |1|Galaxy S22 Plus \(2022\)|Samsung|Android|
+  |1|Galaxy S22 Plus|Samsung|Android|
   |2|Galaxy Z Fold 3|Samsung|Android|
   |3|Galaxy A32|Samsung|Android|
 
