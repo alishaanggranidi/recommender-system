@@ -242,14 +242,46 @@ Menampilkan hasil rekomendasi
   |2|Galaxy Z Fold 3|Samsung|Android|
   |3|Galaxy A32|Samsung|Android|
 
-  - model_recommendations('iPhone 13')
+  - model_recommendations('iPhone XR')
 
   |index|model|brand|operating\_system|
   |---|---|---|---|
-  |0|iPhone 13 Mini|Apple|iOS|
-  |1|iPhone SE (2022)|Apple|iOS|
-  |2|iPhone XR|Apple|iOS|
+  |0|iPhone 13|Apple|iOS|
+  |1|iPhone 13 Mini|Apple|iOS|
+  |2|iPhone SE (2022)|Apple|iOS|
   |3|iPhone 13 Pro|Apple|iOS|
+
+### Evaluasi Precision@k 📊
+
+Precision@k adalah metrik yang digunakan untuk mengukur kualitas rekomendasi dalam sistem rekomendasi. Precision mengukur seberapa banyak item yang relevan dari total item yang direkomendasikan.
+
+#### Formula Precision@k:
+$$
+\text{Precision@k} = \frac{\text{Jumlah item relevan pada k rekomendasi}}{k}
+$$
+
+**Penjelasan:**
+- **Rekomendasi pada k**: Daftar item yang direkomendasikan oleh sistem untuk pengguna pada posisi ke-k.
+- **Item relevan**: Item yang relevan atau sesuai dengan preferensi pengguna dalam kumpulan rekomendasi.
+- **k**: Posisi dalam daftar rekomendasi, misalnya, k = 3 berarti melihat 3 item teratas yang direkomendasikan.
+
+**Contoh Precision pada Hasil Rekomendasi:**
+
+- Untuk rekomendasi Galaxy (k=3):
+  - Rekomendasi: `['Galaxy Z Flip 3', 'Galaxy S22 Plus', 'Galaxy Z Fold 3']`
+  - Item relevan: `{'Galaxy S22 Plus', 'Galaxy S22 Ultra', 'Galaxy S22'}` 
+  - Intersection: `{'Galaxy S22 Plus'}`
+  - **Precision@3**: 0.33 (1 relevan dari 3 rekomendasi)
+
+- Untuk rekomendasi iPhone (k=4):
+  - Rekomendasi: `['iPhone 13', 'iPhone 13 Mini', 'iPhone SE (2022)', 'iPhone 13 Pro']`
+  - Item relevan: `{'iPhone 13', 'iPhone XR', 'iPhone 13 Pro Max', 'iPhone 13'}` 
+  - Intersection: `{'iPhone 13'}`
+  - **Precision@4**: 0.25 (1 relevan dari 4 rekomendasi)
+
+**Interpretasi:**
+- Precision@k memberikan gambaran seberapa efektif rekomendasi sistem dalam memilih item yang relevan untuk pengguna. Nilai yang lebih tinggi menunjukkan sistem rekomendasi yang lebih baik dalam memberikan hasil yang relevan.
+- Precision yang lebih rendah seperti pada contoh iPhone XR menunjukkan bahwa meskipun model memiliki beberapa item relevan, sistem masih dapat ditingkatkan dengan memilih lebih banyak item relevan dalam daftar rekomendasi.
 
 ### Model Sistem Rekomendasi Collaborative Filtering 
 Collaborative Filtering menggunakan interaksi antara pengguna dan item (rating) untuk menghasilkan rekomendasi berdasarkan pola preferensi pengguna.
@@ -279,27 +311,27 @@ Misalnya, pengguna dengan ID 10 memiliki beberapa ponsel dengan rating tinggi da
 
 ### Top-N Recommendation Collaborative Filtering 
 ```
-Showing recommendations for users: 252
+Showing recommendations for users: 243
 ===========================
 cellphone with high ratings from user
 --------------------------------
-OnePlus : Nord 2T
+Vivo : X80 Pro
+Samsung : Galaxy A13
+OnePlus : Nord N20
 Google : Pixel 6  
-Xiaomi : Poco F4
-Google : Pixel 6 Pro 
-Asus : Zenfone 8
+OnePlus : 10 Pro
 --------------------------------
 Top 10 cellphone recommendation
 --------------------------------
 Apple : iPhone XR
 Samsung : Galaxy S22
-Vivo : X80 Pro
 Oppo : Find X5 Pro
 Apple : iPhone 13 Pro
+Apple : iPhone 13 Pro Max
 Apple : iPhone 13 Mini
-OnePlus : 10 Pro
+Xiaomi : 11T Pro
 Apple : iPhone SE (2022)
-Samsung : Galaxy S22 Ultra
+Google : Pixel 6 Pro 
 Apple : iPhone 13
 ```
 *****************************************************************

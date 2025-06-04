@@ -59,6 +59,11 @@ Mengganti nama file agar lebih praktis saat digunakan.
 
 """
 
+!mkdir dataset
+!mv 'cellphones data.csv' 'dataset/cellphones data.csv'
+!mv 'cellphones ratings.csv' 'dataset/cellphones ratings.csv'
+!mv 'cellphones users.csv' 'dataset/cellphones users.csv'
+
 #change nama file
 !mv 'dataset/cellphones data.csv' 'cdata.csv'
 !mv 'dataset/cellphones ratings.csv' 'cratings.csv'
@@ -570,10 +575,36 @@ def model_recommendations(model, similarity_data=cosine_similarity_df, items=dat
 #show hasil rekomendasi untuk Galaxy S22 Ultra
 model_recommendations('Galaxy S22 Ultra')
 
-#show hasil rekomendasi untuk iphone 13
-model_recommendations('iPhone 13')
+#show hasil rekomendasi untuk Galaxy S22 Ultra
+model_recommendations('iPhone XR')
 
-"""## Model Development dengan Collaborative Filtering"""
+def precision_at_k(recommended_items, relevant_items, k):
+    if k > len(recommended_items):
+        k = len(recommended_items)
+
+    if k == 0:
+        return 0.0
+    recommended_at_k = recommended_items[:k]
+    print(f"Recommended at k: {recommended_at_k}")
+    print(f"Relevant items: {relevant_items}")
+
+    intersection = set(recommended_at_k) & relevant_items
+    print(f"Intersection at k: {intersection}")
+
+    num_relevant_at_k = len(intersection)
+    return num_relevant_at_k / k
+
+recommended_models_galaxy = ['Galaxy Z Flip 3', 'Galaxy S22 Plus', 'Galaxy Z Fold 3']
+relevant_models_galaxy = set(['Galaxy S22', 'Galaxy S22 Ultra', 'Galaxy S22 Plus'])
+k_value = 3
+precision_k_galaxy = precision_at_k(recommended_models_galaxy, relevant_models_galaxy, k_value)
+print(f"Precision@{k_value} for Galaxy recommendations: {precision_k_galaxy}")
+
+recommended_models_iphone = ['iPhone 13', 'iPhone 13 Mini', 'iPhone SE (2022)', 'iPhone 13 Pro']
+relevant_models_iphone = set(['iPhone 13 Pro Max', 'iPhone 14', 'iPhone 13', 'iPhone XR'])
+k_value_iphone = 4
+precision_k_iphone = precision_at_k(recommended_models_iphone, relevant_models_iphone, k_value_iphone)
+print(f"Precision@{k_value_iphone} for iPhone XR recommendations: {precision_k_iphone}")
 
 #save dataset ratings pada variabel df
 df = ratings
