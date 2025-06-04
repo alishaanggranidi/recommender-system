@@ -55,10 +55,11 @@ Data `cellphones data` terdiri dari 33 baris dan 14 kolom tanpa adanya nilai yan
 
 Berikut adalah contoh data dari dataset cellphone:
 
-| user_id | cellphone_id | rating | brand   | model      | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
-|---------|--------------|--------|---------|------------|------------------|-----------------|-----|-------------|-------------|---------------|--------------|-------------|--------|-------|--------------|
-| 1       | 0            | 5      | Apple   | iPhone XR  | ios              | 64              | 3   | 4.22        | 12          | 7             | 2942         | 6.1         | 194    | 236   | 26/10/2018   |
-| 2       | 0            | 10     | Samsung | Galaxy S22 | Android          | 128             | 8   | 8.81        | 50          | 10            | 3700         | 6.1         | 167    | 528   | 25/02/2022   |
+| cellphone_id | brand   | model             | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
+|--------------|---------|-------------------|------------------|-----------------|-----|-------------|-------------|---------------|--------------|-------------|--------|-------|--------------|
+| 0            | Apple   | iPhone SE (2022)   | iOS              | 128             | 4   | 7.23        | 12          | 7             | 2018         | 4.7         | 144    | 429   | 18/03/2022   |
+| 1            | Apple   | iPhone 13 Mini     | iOS              | 128             | 4   | 7.72        | 12          | 12            | 2438         | 5.4         | 141    | 699   | 24/09/2021   |
+
 
 *****************************************************************
 Cellphones rating terdiri dari 990 baris dan 3 kolom tanpa adanya missing value. Dataset ini berisi nilai rating yang diberikan oleh pengguna X untuk ponsel Y, berikut adalah informasi dari cellphones rating:
