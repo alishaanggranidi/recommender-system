@@ -183,14 +183,14 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 - **Pembagian Dataset**: Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan.
 - **Encoding Fitur**: Melakukan encoding pada fitur `user_id` dan `cellphone_id` untuk menyusun input yang siap digunakan dalam model Collaborative Filtering.
 - **Menghapus Outliers**: Mengeliminasi outlier pada kolom `rating` yang memiliki nilai 18  untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
-- **Normalisasi Rating**: Melakukan normalisasi rating menjadi skala 0-1 untuk meningkatkan akurasi dalam Collaborative Filtering.
+- **Normalisasi Rating**: Melakukan normalisasi rating dengan menggunakan nilai minimum (1.0) dan maksimum (10.0) dari data rating yang telah dibersihkan. Implementasi normalisasi menghasilkan skala nilai antara 0 dan 0.9.
 
 ### Proses Data Preparation
 Berikut adalah urutan proses data preparation yang dilakukan:
 
 1. **Menggabungkan dataset** `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe
-2. **Menghapus nilai Null** pada kolom `occupation`
-3. **Menghapus outlier** pada kolom `rating` dan `gender`
+2. **Menghapus nilai Null** pada kolom `occupation` (yang secara tidak langsung menghapus nilai gender yang tidak valid)
+3. **Menghapus outlier** pada kolom `rating`= dengan nilai 18 
 4. **Mengubah format penulisan** pada kolom `occupation` menjadi huruf kecil
 5. **Memperbaiki inkonsistensi penulisan** pada kolom `occupation`
 6. **Menghapus duplikasi data** berdasarkan `cellphone_id`
@@ -202,7 +202,7 @@ Berikut adalah urutan proses data preparation yang dilakukan:
    - Pengacakan dataset dengan random state
    - Pembagian dataset menjadi train dan test (80:20)
    - Encoding fitur `user_id` dan `cellphone_id`
-   - Normalisasi rating ke skala 0-1
+   - Normalisasi rating ke skala 0-0.9
 
 ## Modeling
 
@@ -250,38 +250,6 @@ Menampilkan hasil rekomendasi
   |1|iPhone 13 Mini|Apple|iOS|
   |2|iPhone SE (2022)|Apple|iOS|
   |3|iPhone 13 Pro|Apple|iOS|
-
-### Evaluasi Precision@k 📊
-
-Precision@k adalah metrik yang digunakan untuk mengukur kualitas rekomendasi dalam sistem rekomendasi. Precision mengukur seberapa banyak item yang relevan dari total item yang direkomendasikan.
-
-#### Formula Precision@k:
-$$
-\text{Precision@k} = \frac{\text{Jumlah item relevan pada k rekomendasi}}{k}
-$$
-
-**Penjelasan:**
-- **Rekomendasi pada k**: Daftar item yang direkomendasikan oleh sistem untuk pengguna pada posisi ke-k.
-- **Item relevan**: Item yang relevan atau sesuai dengan preferensi pengguna dalam kumpulan rekomendasi.
-- **k**: Posisi dalam daftar rekomendasi, misalnya, k = 3 berarti melihat 3 item teratas yang direkomendasikan.
-
-**Contoh Precision pada Hasil Rekomendasi:**
-
-- Untuk rekomendasi Galaxy (k=3):
-  - Rekomendasi: `['Galaxy Z Flip 3', 'Galaxy S22 Plus', 'Galaxy Z Fold 3']`
-  - Item relevan: `{'Galaxy S22 Plus', 'Galaxy S22 Ultra', 'Galaxy S22'}` 
-  - Intersection: `{'Galaxy S22 Plus'}`
-  - **Precision@3**: 0.33 (1 relevan dari 3 rekomendasi)
-
-- Untuk rekomendasi iPhone (k=4):
-  - Rekomendasi: `['iPhone 13', 'iPhone 13 Mini', 'iPhone SE (2022)', 'iPhone 13 Pro']`
-  - Item relevan: `{'iPhone 13', 'iPhone XR', 'iPhone 13 Pro Max', 'iPhone 13'}` 
-  - Intersection: `{'iPhone 13'}`
-  - **Precision@4**: 0.25 (1 relevan dari 4 rekomendasi)
-
-**Interpretasi:**
-- Precision@k memberikan gambaran seberapa efektif rekomendasi sistem dalam memilih item yang relevan untuk pengguna. Nilai yang lebih tinggi menunjukkan sistem rekomendasi yang lebih baik dalam memberikan hasil yang relevan.
-- Precision yang lebih rendah seperti pada contoh iPhone XR menunjukkan bahwa meskipun model memiliki beberapa item relevan, sistem masih dapat ditingkatkan dengan memilih lebih banyak item relevan dalam daftar rekomendasi.
 
 ### Model Sistem Rekomendasi Collaborative Filtering 
 Collaborative Filtering menggunakan interaksi antara pengguna dan item (rating) untuk menghasilkan rekomendasi berdasarkan pola preferensi pengguna.
@@ -342,7 +310,40 @@ Apple : iPhone 13
 
 Pada bagian ini, model rekomendasi yang telah dibangun akan dievaluasi menggunakan metrik evaluasi yang sesuai. Untuk model prediksi rating, kami akan menggunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Selain itu, evaluasi juga akan dilakukan untuk menentukan apakah proyek ini berhasil menjawab pernyataan masalah dan memberikan solusi yang diharapkan.
 
-### Metrik Evaluasi 📈
+
+### Metrik Evaluasi Content-Based Filtering: Precision@k 📊
+
+Precision@k adalah metrik yang digunakan untuk mengukur kualitas rekomendasi dalam sistem rekomendasi. Precision mengukur seberapa banyak item yang relevan dari total item yang direkomendasikan.
+
+#### Formula Precision@k:
+$$
+\text{Precision@k} = \frac{\text{Jumlah item relevan pada k rekomendasi}}{k}
+$$
+
+**Penjelasan:**
+- **Rekomendasi pada k**: Daftar item yang direkomendasikan oleh sistem untuk pengguna pada posisi ke-k.
+- **Item relevan**: Item yang relevan atau sesuai dengan preferensi pengguna dalam kumpulan rekomendasi.
+- **k**: Posisi dalam daftar rekomendasi, misalnya, k = 3 berarti melihat 3 item teratas yang direkomendasikan.
+
+**Contoh Precision pada Hasil Rekomendasi:**
+
+- Untuk rekomendasi Galaxy (k=3):
+  - Rekomendasi: `['Galaxy Z Flip 3', 'Galaxy S22 Plus', 'Galaxy Z Fold 3']`
+  - Item relevan: `{'Galaxy S22 Plus', 'Galaxy S22 Ultra', 'Galaxy S22'}` 
+  - Intersection: `{'Galaxy S22 Plus'}`
+  - **Precision@3**: 0.33 (1 relevan dari 3 rekomendasi)
+
+- Untuk rekomendasi iPhone (k=4):
+  - Rekomendasi: `['iPhone 13', 'iPhone 13 Mini', 'iPhone SE (2022)', 'iPhone 13 Pro']`
+  - Item relevan: `{'iPhone 13', 'iPhone XR', 'iPhone 13 Pro Max', 'iPhone 13'}` 
+  - Intersection: `{'iPhone 13'}`
+  - **Precision@4**: 0.25 (1 relevan dari 4 rekomendasi)
+
+**Interpretasi:**
+- Precision@k memberikan gambaran seberapa efektif rekomendasi sistem dalam memilih item yang relevan untuk pengguna. Nilai yang lebih tinggi menunjukkan sistem rekomendasi yang lebih baik dalam memberikan hasil yang relevan.
+- Precision yang lebih rendah seperti pada contoh iPhone XR menunjukkan bahwa meskipun model memiliki beberapa item relevan, sistem masih dapat ditingkatkan dengan memilih lebih banyak item relevan dalam daftar rekomendasi.
+
+### Metrik Evaluasi Collaborative Filterin: Root Mean Squared Error (RMSE) 📈
 Root Mean Squared Error (RMSE) dalah akar kuadrat dari rata-rata kuadrat selisih antara prediksi dan nilai sebenarnya. Metrik ini menggambarkan sejauh mana prediksi model menyimpang dari nilai yang sebenarnya dalam satuan yang sama dengan variabel yang diprediksi. RMSE sangat berguna karena memberikan penalti yang lebih besar pada kesalahan yang lebih besar.
 
 $$
