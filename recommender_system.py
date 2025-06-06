@@ -606,6 +606,8 @@ k_value_iphone = 4
 precision_k_iphone = precision_at_k(recommended_models_iphone, relevant_models_iphone, k_value_iphone)
 print(f"Precision@{k_value_iphone} for iPhone XR recommendations: {precision_k_iphone}")
 
+"""## Model Sistemm Rekomendasi Collaborative Filtering """
+
 #save dataset ratings pada variabel df
 df = ratings
 df

@@ -154,12 +154,12 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
 #### 1. Tahap Persiapan Data Umum
 - **Menggabungkan Dataset**: Menggabungkan dataset `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe untuk memudahkan analisis dan menghindari fragmentasi data.
 - **Menangani Missing Values**: Menghapus nilai Null pada kolom `occupation` agar tidak ada data yang hilang yang dapat memengaruhi hasil analisis dan model.
-- **Menghapus Outliers**: Mengeliminasi outlier pada kolom `gender` yang memiliki nilai -Select Gender- untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
+- **Menghapus Outliers**: Penghapusan ini secara tidak langsung juga menghapus satu entri dengan gender = '-Select Gender-' (user ID 53), namun dua entri lain dengan nilai serupa tetap ada karena memiliki data occupation yang lengkap. Catatan: Dua pengguna lain dengan gender = -Select Gender- (user ID 105 dan 230) yang memiliki data occupation tidak terhapus dan masih ada dalam data yang diproses lebih lanjut.
 - **Standardisasi Data**: Mengubah semua nilai pada kolom `occupation` menjadi huruf kecil untuk memastikan konsistensi format penulisan dan mencegah kesalahan interpretasi.
 - **Perbaikan Inkonsistensi**: Memperbaiki penulisan yang salah pada kolom `occupation`, seperti mengganti nilai 'Healthare' menjadi 'healthcare' dan 'it' menjadi 'information technology'.
-- **Penghapusan Duplikasi**: Menghapus duplikasi berdasarkan `cellphone_id` untuk memastikan dataset tidak mengandung entri berulang yang dapat memengaruhi model.
 
 #### 2. Persiapan Data untuk Content-Based Filtering
+- **Penghapusan Duplikasi**: Menghapus duplikasi berdasarkan `cellphone_id` untuk memastikan dataset tidak mengandung entri berulang yang dapat memengaruhi model.
 - **Feature Selection**: Karena TF-IDF hanya cocok digunakan untuk data teks, maka hanya kolom dengan tipe data objek yang dipilih (`cellphone_id`, `brand`, `model`, `operating_system`).
 - **TF-IDF Vectorization**: Menggunakan TF-IDF (Term Frequency-Inverse Document Frequency) untuk mengekstrak fitur dari kolom `brand` guna menghitung kemiripan antara model ponsel.
   ```python
@@ -179,31 +179,30 @@ Berikut adalah variabel-variabel yang terdapat dalam dataset:
   Hasilnya berupa matriks berukuran (33,10), di mana 33 merujuk pada jumlah data dan 10 adalah jumlah brand.
 
 #### 3. Persiapan Data untuk Collaborative Filtering
-- **Pengacakan Dataset**: Melakukan pengacakan dataset (`df.sample(frac=1, random_state=42)`) untuk memastikan distribusi data yang acak sebelum pembagian.
-- **Pembagian Dataset**: Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan.
 - **Encoding Fitur**: Melakukan encoding pada fitur `user_id` dan `cellphone_id` untuk menyusun input yang siap digunakan dalam model Collaborative Filtering.
 - **Menghapus Outliers**: Mengeliminasi outlier pada kolom `rating` yang memiliki nilai 18  untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mengganggu kinerja model.
-- **Normalisasi Rating**: Melakukan normalisasi rating dengan menggunakan nilai minimum (1.0) dan maksimum (10.0) dari data rating yang telah dibersihkan. Implementasi normalisasi menghasilkan skala nilai antara 0 dan 0.9.
+- **Pengacakan Dataset**: Melakukan pengacakan dataset (`df.sample(frac=1, random_state=42)`) untuk memastikan distribusi data yang acak sebelum pembagian.
+- **Normalisasi Rating**: Melakukan normalisasi rating menjadi skala 1-10 untuk meningkatkan akurasi dalam Collaborative Filtering.
+- **Pembagian Dataset**: Membagi dataset menjadi train dan test dengan proporsi 80:20 untuk memastikan bahwa model dilatih dengan data yang cukup dan diuji dengan data yang tidak terpengaruh oleh proses pelatihan.
 
 ### Proses Data Preparation
 Berikut adalah urutan proses data preparation yang dilakukan:
 
 1. **Menggabungkan dataset** `cellphones data`, `cellphones ratings`, dan `cellphones user` menjadi satu dataframe
-2. **Menghapus nilai Null** pada kolom `occupation` (yang secara tidak langsung menghapus nilai gender yang tidak valid)
-3. **Menghapus outlier** pada kolom `rating`= dengan nilai 18 
-4. **Mengubah format penulisan** pada kolom `occupation` menjadi huruf kecil
-5. **Memperbaiki inkonsistensi penulisan** pada kolom `occupation`
-6. **Menghapus duplikasi data** berdasarkan `cellphone_id`
-7. **Persiapan untuk Content-Based Filtering**:
+2. **Menghapus nilai Null** pada kolom `occupation`
+3. **Memperbaiki inkonsistensi penulisan** pada kolom `occupation` 
+4. **Persiapan untuk Content-Based Filtering**:
+   - Menghapus duplikasi data berdasarkan `cellphone_id`
    - Seleksi fitur kategorikal
    - Implementasi TF-IDF Vectorization pada kolom `brand`
    - Transformasi ke bentuk matrix
-8. **Persiapan untuk Collaborative Filtering**:
-   - Pengacakan dataset dengan random state
-   - Pembagian dataset menjadi train dan test (80:20)
+5. **Persiapan untuk Collaborative Filtering**:
    - Encoding fitur `user_id` dan `cellphone_id`
-   - Normalisasi rating ke skala 0-0.9
-
+   - Menghapus outlier pada kolom `rating`
+   - Pengacakan dataset dengan random state
+   - Normalisasi rating ke skala 1-10
+   - Pembagian dataset menjadi train dan test (80:20)
+   
 ## Modeling
 
 Pada tahap modeling, akan dibahas dua pendekatan utama yang digunakan dalam pembangunan sistem rekomendasi, yaitu: Content-Based Filtering dan Collaborative Filtering.
